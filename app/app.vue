@@ -1,0 +1,3 @@
+<template>
+    <Keyboard/>
+</template>
