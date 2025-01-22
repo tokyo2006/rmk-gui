@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+const props = defineProps<{
+  layoutKeymap: any[],
+}>();
+console.log(props.layoutKeymap);
 const selectedValue = ref('');
 watch(selectedValue,() => {
   console.log('update:modelValue', selectedValue.value);

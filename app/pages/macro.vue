@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
     macro comming soon
   </div>
 </template>

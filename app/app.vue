@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { invoke } from '@tauri-apps/api/core';
 
-console.log(await invoke('get_vial_devices'));
+await invoke('get_vial_devices');
+await invoke('update_keymap');
 </script>
 
 <template>
@@ -13,3 +14,16 @@ console.log(await invoke('get_vial_devices'));
         </div>
     </main>
 </template>
+
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.1s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
     ota comming soon
   </div>
 </template>

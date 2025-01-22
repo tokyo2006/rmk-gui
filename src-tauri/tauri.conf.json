@@ -1,8 +1,8 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "nuxt-app",
+  "productName": "rmk-gui",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev.test",
+  "identifier": "com.rmk.gui",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:3000",

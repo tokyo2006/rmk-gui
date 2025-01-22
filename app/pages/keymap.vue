@@ -1,13 +1,10 @@
-<template>
-  <div>
-    keymap comming soon
-  </div>
-</template>
-
 <script lang="ts" setup>
+import { Serial } from '@ijprest/kle-serial';
+
+const layout:any[] = await invoke('get_layout_keymap');
 
 </script>
 
-<style>
-
-</style>
+<template>
+  <KeyBoard :layoutKeymap="layout" class="mx-auto mt-8"></KeyBoard>
+</template>
