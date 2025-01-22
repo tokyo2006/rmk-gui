@@ -3,7 +3,7 @@ const props = defineProps<{
   lower: string,
   radio: string,
   upper?: string,
-  length?: string,
+  length?: number,
 }>();
 
 const spanWidth = computed(() => {

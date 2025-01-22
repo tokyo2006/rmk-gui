@@ -6,5 +6,5 @@ const layout:any[] = await invoke('get_layout_keymap');
 </script>
 
 <template>
-  <KeyBoard :layoutKeymap="layout" class="mx-auto mt-8"></KeyBoard>
+  <KeyBoard :layoutKeymap="layout"></KeyBoard>
 </template>

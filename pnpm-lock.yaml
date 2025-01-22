@@ -39,6 +39,12 @@ importers:
       '@tauri-apps/cli':
         specifier: ^2.2.2
         version: 2.2.2
+      prettier:
+        specifier: 3.4.2
+        version: 3.4.2
+      prettier-plugin-rust:
+        specifier: 0.1.9
+        version: 0.1.9
 
 packages:
 
@@ -2089,6 +2095,9 @@ packages:
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
 
+  jinx-rust@0.1.6:
+    resolution: {integrity: sha512-qP+wtQL1PrDDFwtPKhNGtjWOmijCrKdfUHWTV2G/ikxfjrh+cjdvkQTmny9RAsVF0jiui9m+F0INWu4cuRcZeQ==}
+
   jiti@1.21.7:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
     hasBin: true
@@ -2793,6 +2802,19 @@ packages:
   postcss@8.4.49:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
+
+  prettier-plugin-rust@0.1.9:
+    resolution: {integrity: sha512-n1DTTJQaHMdnoG/+nKUvBm3EKsMVWsYES2UPCiOPiZdBrmuAO/pX++m7L3+Hz3uuhtddpH0HRKHB2F3jbtJBOQ==}
+
+  prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+
+  prettier@3.4.2:
+    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   pretty-bytes@6.1.1:
     resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
@@ -5792,6 +5814,8 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
+  jinx-rust@0.1.6: {}
+
   jiti@1.21.7: {}
 
   jiti@2.4.2: {}
@@ -6651,6 +6675,15 @@ snapshots:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  prettier-plugin-rust@0.1.9:
+    dependencies:
+      jinx-rust: 0.1.6
+      prettier: 2.8.8
+
+  prettier@2.8.8: {}
+
+  prettier@3.4.2: {}
 
   pretty-bytes@6.1.1: {}
 
