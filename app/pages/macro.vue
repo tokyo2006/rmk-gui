@@ -1,13 +1,7 @@
 <template>
-  <div class="text-center">
-    macro comming soon
-  </div>
+  <div class="text-center">macro comming soon</div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style>
-
-</style>
+<style></style>

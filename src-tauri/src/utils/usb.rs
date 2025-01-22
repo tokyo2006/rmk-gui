@@ -1,8 +1,8 @@
-use std::io::Read;
 use byteorder::{ByteOrder, LittleEndian};
 use hidapi::{DeviceInfo, HidDevice};
 use log::info;
 use serde_json::Value;
+use std::io::Read;
 use xz2::read::XzDecoder;
 
 use crate::models::*;
@@ -38,11 +38,7 @@ pub fn key_count(payload: &Value) -> usize {
 
 pub fn get_vial_payload(device: &HidDevice) -> Value {
     //get size
-    let size = write_read(
-        device,
-        &[VialCommand::VialPrefix.into(), VialCommand::GetSize.into()],
-    )
-    .unwrap();
+    let size = write_read(device, &[VialCommand::VialPrefix.into(), VialCommand::GetSize.into()]).unwrap();
     let size = LittleEndian::read_u32(&size) as usize;
     //get payload
     let mut payload = Vec::with_capacity(size);

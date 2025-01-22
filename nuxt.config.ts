@@ -14,7 +14,7 @@ export default defineNuxtConfig({
         from: '@tauri-apps/api/core',
         imports: ['invoke'],
       },
-    ]
+    ],
   },
 
   app: {
@@ -30,4 +30,4 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxtjs/tailwindcss'],
-})
+});

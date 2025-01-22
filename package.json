@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "rmk-gui",
   "private": true,
   "type": "module",
   "scripts": {
@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "fmt": "prettier --write ./app nuxt.config.ts package.json README.md src-tauri/tauri.conf.json && cd src-tauri && cargo fmt"
   },
   "dependencies": {
     "@iconify/json": "^2.2.294",
@@ -23,7 +24,6 @@
   "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
   "devDependencies": {
     "@tauri-apps/cli": "^2.2.2",
-    "prettier": "3.4.2",
-    "prettier-plugin-rust": "0.1.9"
+    "prettier": "3.4.2"
   }
 }

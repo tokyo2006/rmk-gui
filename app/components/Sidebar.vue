@@ -9,7 +9,7 @@ watch(selectedPage, (newValue) => {
 
 <template>
   <div class="bg-base-100 min-w-48 border-r border-base-300">
-    <img src="~/assets/rmk_logo.png" class="h-16 mx-auto">
+    <img src="~/assets/rmk_logo.png" class="h-16 mx-auto" />
     <label class="custom-option py-3 flex w-36 mx-auto mt-2 border-base-100">
       <input type="radio" name="radio-17" class="radio hidden" value="/" v-model="selectedPage" checked />
       <div class="flex justify-center items-center w-full">

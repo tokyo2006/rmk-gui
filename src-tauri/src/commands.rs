@@ -26,7 +26,7 @@ pub async fn get_vial_devices(state: tauri::State<'_, AppState>) -> Result<Vec<V
         }
     }
     //only for test
-    state.current_device = Some(state.hid_api.open_path(&devices[0].path).unwrap()); 
+    state.current_device = Some(state.hid_api.open_path(&devices[0].path).unwrap());
     state.kbd_params.layers = layer_count(state.current_device.as_ref().unwrap());
     state.kbd_params.macros = macro_count(state.current_device.as_ref().unwrap());
     state.kbd_params.payload = get_vial_payload(state.current_device.as_ref().unwrap());
@@ -40,10 +40,7 @@ pub async fn get_vial_devices(state: tauri::State<'_, AppState>) -> Result<Vec<V
 }
 
 #[tauri::command]
-pub async fn connect_vial_device(
-    state: tauri::State<'_, AppState>,
-    path: CString,
-) -> Result<(), ()> {
+pub async fn connect_vial_device(state: tauri::State<'_, AppState>, path: CString) -> Result<(), ()> {
     let mut state = state.lock().await;
     let device = state.hid_api.open_path(&path).unwrap();
     state.kbd_params.layers = layer_count(&device);
@@ -102,22 +99,15 @@ pub async fn update_keymap(state: tauri::State<'_, AppState>) -> Result<(), ()> 
         let data = write_read(device, &msg).unwrap();
         keymap.extend_from_slice(&data[4..4 + read_size]);
     }
-    itertools::iproduct!(
-        0..state.kbd_params.layers,
-        0..state.kbd_params.rows,
-        0..state.kbd_params.cols
-    )
-    .for_each(|(layer, row, col)| {
-        let offset =
-            layer as usize * state.kbd_params.rows as usize * state.kbd_params.cols as usize * 2
+    itertools::iproduct!(0..state.kbd_params.layers, 0..state.kbd_params.rows, 0..state.kbd_params.cols).for_each(
+        |(layer, row, col)| {
+            let offset = layer as usize * state.kbd_params.rows as usize * state.kbd_params.cols as usize * 2
                 + row as usize * state.kbd_params.cols as usize * 2
                 + col as usize * 2;
-        let keycode = KeyCode::from(&keymap[offset..=offset + 1]);
-        state
-            .kbd_params
-            .keymap_set
-            .insert((layer, row, col), keycode);
-    });
+            let keycode = KeyCode::from(&keymap[offset..=offset + 1]);
+            state.kbd_params.keymap_set.insert((layer, row, col), keycode);
+        },
+    );
     Ok(())
 }
 
@@ -125,17 +115,16 @@ pub async fn update_keymap(state: tauri::State<'_, AppState>) -> Result<(), ()> 
 pub async fn get_layout_keymap(state: tauri::State<'_, AppState>) -> Result<Vec<Key>, ()> {
     let state = state.lock().await;
     let kle: kle_serial::Keyboard =
-        serde_json::from_value(state.kbd_params.payload.clone()["layouts"]["keymap"].clone())
-            .unwrap();
+        serde_json::from_value(state.kbd_params.payload.clone()["layouts"]["keymap"].clone()).unwrap();
     let mut keys = vec![];
     for kle_key in kle.keys {
-        let position_x = (kle_key.x,kle_key.x2);
-        let position_y = (kle_key.y,kle_key.y2);
-        let width = (kle_key.width,kle_key.width2);
-        let height = (kle_key.height,kle_key.height2);
+        let position_x = (kle_key.x, kle_key.x2);
+        let position_y = (kle_key.y, kle_key.y2);
+        let width = (kle_key.width, kle_key.width2);
+        let height = (kle_key.height, kle_key.height2);
         let rotation = kle_key.rotation;
         let layer = 0u8;
-        let legends_text =  kle_key.legends[0].as_ref().unwrap().text.clone();
+        let legends_text = kle_key.legends[0].as_ref().unwrap().text.clone();
         let mut parts = legends_text.split(',').map(|s| s.parse::<u8>().unwrap());
         let row = parts.next().unwrap();
         let col = parts.next().unwrap();

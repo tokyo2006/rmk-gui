@@ -6,13 +6,13 @@ await invoke('update_keymap');
 </script>
 
 <template>
-    <main class="flex h-screen bg-base-200">
-        <Sidebar/>
-        <div class="flex-grow flex flex-col">
-            <Header/>
-            <NuxtPage class="flex-grow"/>
-        </div>
-    </main>
+  <main class="flex h-screen bg-base-200">
+    <Sidebar />
+    <div class="flex-grow flex flex-col">
+      <Header />
+      <NuxtPage class="flex-grow" />
+    </div>
+  </main>
 </template>
 
 <style>
