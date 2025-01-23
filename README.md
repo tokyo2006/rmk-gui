@@ -10,32 +10,44 @@
 todo
 
 ## Features
+
 - Based on Rust and Tauri 2 frameworks.
 - Concise and modern user interface.
 - Support for Windows, macOS, and Linux.
 
 ## Development
+
 Make sure you have Rust and Node.js installed on your system.
+
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/liyang8246/rmk-gui.git
-    cd rmk-gui
-    ```
+   ```bash
+   git clone https://github.com/liyang8246/rmk-gui.git
+   cd rmk-gui
+   ```
 2. Install dependencies:
-    ```bash
-    pnpm install
-    ```
+   ```bash
+   pnpm install
+   ```
 3. Start the development server:
-    ```bash
-    pnpm tauri dev
-    ```
+   ```bash
+   pnpm tauri dev
+   ```
 4. Build the application:
-    ```bash
-    pnpm tauri build
-    ```
+   ```bash
+   pnpm tauri build
+   ```
 
 ## Roadmap
+
 todo
+
+## Acknowledgement
+
+rmk-gui was based on or inspired by these projects and so on:
+
+- [Tauri](https://github.com/tauri-apps/tauri)
+- [Nuxt](https://github.com/nuxt/nuxt)
+- [Vial-gui](https://github.com/vial-kb/vial-gui)
 
 ## License
 
