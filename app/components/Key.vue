@@ -27,7 +27,7 @@ const click = () => {
 <template>
   <div class="w-[58px] h-[58px] p-1" :style="{ width: keyWidth }">
     <label class="flex justify-center items-center bg-base-100 h-full w-full rounded-md border shadow-sm px-1 cursor-pointer"
-      :class="{ 'border-primary': selectedValue?.keycode === props.lower }">
+      :class="{ 'border-primary': selectedValue === props.value && props.type === 'radio' }">
       <input v-if="props.type === 'radio'" type="radio" v-model="selectedValue" :name="radioGroup" class="hidden" :value="value" />
       <input v-if="props.type === 'button'" type="button" :name="radioGroup" @click="click()" class="hidden" :value="lower" />
       <span v-if="!props.upper" class="flex justify-center" :class="{ 'text-[10px]': lower.length > 1 }">

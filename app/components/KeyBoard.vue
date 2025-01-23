@@ -1,26 +1,25 @@
 <script lang="ts" setup>
-const props = defineProps<{
-  layoutKeymap: any[];
-}>();
-console.log(props.layoutKeymap);
+const layoutKeymap = defineModel<any[]>();
+// const props = defineProps<{
+//   layoutKeymap: any[];
+// }>();
+// console.log(layoutKeymap.value);
 const selectedValue = ref();
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['selected']);
 watch(selectedValue, () => {
-  emit('update:modelValue', selectedValue.value);
+  emit('selected', selectedValue.value);
 });
 
 const containerSize = computed(() => {
   let maxWidth = 0;
   let maxHeight = 0;
-
-  props.layoutKeymap.forEach(key => {
+  layoutKeymap.value?.forEach(key => {
     const rightEdge = key.position_x[0] * 58 + key.width[0] * 58;
-    const bottomEdge = key.position_y[0] * 58 + 58; // 假设每个 Key 的高度是 58px
+    const bottomEdge = key.position_y[0] * 58 + 58;
     maxWidth = Math.max(maxWidth, rightEdge);
     maxHeight = Math.max(maxHeight, bottomEdge);
   });
-
   return { width: maxWidth, height: maxHeight };
 });
 </script>
