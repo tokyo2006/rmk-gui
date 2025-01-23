@@ -2,8 +2,8 @@ use byteorder::BigEndian;
 use byteorder::ByteOrder;
 use log::info;
 use serde_json::Value;
-use strum::IntoEnumIterator;
 use std::ffi::CString;
+use strum::IntoEnumIterator;
 
 use crate::models::*;
 use crate::utils::*;
@@ -155,7 +155,7 @@ pub async fn get_keycode_list(_state: tauri::State<'_, AppState>) -> Result<Vec<
 }
 
 #[tauri::command]
-pub async fn set_keycode(state: tauri::State<'_, AppState>, layer:u8, row: u8, col: u8, keycode: u16) -> Result<(), ()> {
+pub async fn set_keycode(state: tauri::State<'_, AppState>, layer: u8, row: u8, col: u8, keycode: u16) -> Result<(), ()> {
     let state = state.lock().await;
     let device = state.current_device.as_ref().unwrap();
     let mut msg = [0u8; 6];

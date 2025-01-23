@@ -14,7 +14,7 @@ watch(selectedValue, () => {
 const containerSize = computed(() => {
   let maxWidth = 0;
   let maxHeight = 0;
-  layoutKeymap.value?.forEach(key => {
+  layoutKeymap.value?.forEach((key) => {
     const rightEdge = key.position_x[0] * 58 + key.width[0] * 58;
     const bottomEdge = key.position_y[0] * 58 + 58;
     maxWidth = Math.max(maxWidth, rightEdge);
@@ -30,7 +30,7 @@ const containerSize = computed(() => {
       class="relative mx-auto mt-4 bg-base-100 outline outline-4 outline-base-100 rounded"
       :style="{
         height: `${containerSize.height}px`,
-        width: `${containerSize.width}px`
+        width: `${containerSize.width}px`,
       }"
     >
       <Key
