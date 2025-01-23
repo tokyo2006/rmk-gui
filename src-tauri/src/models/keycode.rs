@@ -1,9 +1,10 @@
 use num_enum::TryFromPrimitive;
 use serde::Serialize;
+use strum::{Display, EnumIter};
 
 // copy from https://github.com/HaoboGu/rmk/blob/main/rmk/src/keyboard.rs
 #[repr(u16)]
-#[derive(Debug, Clone, Copy, Serialize, TryFromPrimitive)]
+#[derive(Debug, Clone, Copy, Serialize, TryFromPrimitive, EnumIter, Display)]
 pub enum KeyCode {
     /// Reserved, no-key.
     No                               = 0x0000,

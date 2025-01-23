@@ -33,6 +33,8 @@ pub fn run() {
             commands::get_key_count,
             commands::update_keymap,
             commands::get_layout_keymap,
+            commands::get_keycode_list,
+            commands::set_keycode,
         ]);
     builder
         .run(tauri::generate_context!())

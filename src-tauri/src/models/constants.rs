@@ -10,6 +10,7 @@ pub const BUFFER_FETCH_CHUNK: usize = 28;
 pub enum VialCommand {
     GetSize         = 0x01,
     GetDefinition   = 0x02,
+    SetKeycode      = 0x05,
     GetMacroCount   = 0x0C,
     GetLayerCount   = 0x11,
     GetKeymapBuffer = 0x12,

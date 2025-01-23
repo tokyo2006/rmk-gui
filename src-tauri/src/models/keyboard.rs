@@ -32,6 +32,9 @@ impl KeyboardParams {
 
 #[derive(Debug, Serialize)]
 pub struct Key {
+    pub layer:      u8,
+    pub row:        u8,
+    pub col:        u8,
     pub position_x: (f64, f64),
     pub position_y: (f64, f64),
     pub width:      (f64, f64),
