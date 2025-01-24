@@ -21,6 +21,11 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
   },
 
+  typescript: {
+    typeCheck: true,
+    tsConfig: {},
+  },
+
   vite: {
     clearScreen: false,
     envPrefix: ['VITE_', 'TAURI_'],

@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "fmt": "prettier --write ./app nuxt.config.ts package.json README.md src-tauri/tauri.conf.json && cd src-tauri && cargo fmt"
+    "fmt": "prettier --write ./app nuxt.config.ts package.json README.md src-tauri/tauri.conf.json && cd src-tauri && cargo fmt",
+    "clean": "rimraf .nuxt .output node_modules dist src-tauri/target || true"
   },
   "dependencies": {
     "@iconify/json": "^2.2.294",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@tauri-apps/cli": "^2.2.2",
     "prettier": "3.4.2",
+    "rimraf": "^6.0.1",
     "typescript": "^5.7.3",
     "vue-tsc": "^2.2.0"
   }
