@@ -48,7 +48,7 @@ Too many to write
 
 ## Acknowledgement
 
-rmk-gui was based on or inspired by these projects and so on:
+RMK-GUI was based on or inspired by these projects and so on:
 
 - [Tauri](https://github.com/tauri-apps/tauri) A framework for building tiny, fast binaries for all major desktop and mobile platforms.
 - [Nuxt](https://github.com/nuxt/nuxt) An open source framework that makes web development intuitive and powerful.
@@ -57,7 +57,7 @@ rmk-gui was based on or inspired by these projects and so on:
 
 ## License
 
-rmk-gui is licensed under either of
+RMK-GUI is licensed under either of
 
 - Apache License, Version 2.0 (LICENSE-APACHE or <http://www.apache.org/licenses/LICENSE-2.0>)
 - MIT license (LICENSE-MIT or <http://opensource.org/licenses/MIT>)
