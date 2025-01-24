@@ -10,8 +10,8 @@ pub use constants::*;
 pub mod keycode;
 pub use keycode::*;
 
-pub mod usb_device;
-pub use usb_device::*;
+pub mod vial_device;
+pub use vial_device::*;
 
 pub mod keyboard;
 pub use keyboard::*;
