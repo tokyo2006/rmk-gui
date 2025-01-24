@@ -1,9 +1,9 @@
-<h1 align="center">
-  <img src="./src-tauri/icons/icon.png" alt="Clash" width="128" />
-  <br>
-  Gui configuration for <a href="https://github.com/HaoboGu/rmk">RMK</a> based on <a href="https://github.com/tauri-apps/tauri">Tauri</a> and <a href="https://github.com/nuxt/nuxt">Nuxt</a>
-  <br>
-</h1>
+<div align="center">
+<img src="./src-tauri/icons/icon.png" alt="Clash" width="128" />
+<h3>
+Gui configuration for <a href="https://github.com/HaoboGu/rmk">RMK</a> based on <a href="https://github.com/tauri-apps/tauri">Tauri</a> and <a href="https://github.com/nuxt/nuxt">Nuxt</a>
+<h3>
+</div>
 
 ## Preview
 
