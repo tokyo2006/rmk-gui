@@ -4,7 +4,7 @@ use strum::{Display, EnumIter};
 
 // copy from https://github.com/HaoboGu/rmk/blob/main/rmk/src/keyboard.rs
 #[repr(u16)]
-#[derive(Debug, Clone, Copy, Serialize, TryFromPrimitive, EnumIter, Display)]
+#[derive(Debug, Clone, Copy, Serialize, TryFromPrimitive, EnumIter, Display, PartialEq, Eq)]
 pub enum KeyCode {
     /// Reserved, no-key.
     No                               = 0x0000,
@@ -717,6 +717,27 @@ pub enum KeyCode {
     User30                           = 0x85E,
     User31                           = 0x85F,
     //todo
+    // The following keycodes are vial keycodes.
+    // ALL vial keycodes: https://github.com/vial-kb/vial-gui/blob/main/src/main/python/keycodes/keycodes_v6.py.
+    // Some of them are converted to the corresponding RMK keycodes.
+    // Some are converted to RMK actions.
+    // There are also some of them are not converted.
+    // 0x0100..=0x1FFF: WithModifier
+    // 0x2000..=0x3FFF: ModifierTapHold
+    // 0x4000..=0x4FFF: LayerTapHold
+    // 0x5200..=0x521F: LayerToggleOnly
+    // 0x5220..=0x523F: LayerOn
+    // 0x5240..=0x525F: DefaultLayer
+    // 0x5260..=0x527F: LayerToggle
+    // 0x5280..=0x529F: OneShotLayer
+    // 0x52A0..=0x52BF: OneShotModifier
+    // 0x52C0..=0x52DF: LayerTapToggle
+    // 0x5700..=0x57FF: TapDance
+    // 0x7000..=0x701F: QMK functions
+    // 0x7700..=0x77FF: Macro keycodes -> 0x500..0x5FF, there're 32 named macros(0x500..0x51F), but actually the number of macros could be at most 256
+    // 0x7800..=0x783F: Backlight and RGB configuration
+    // 0x7C00..=0x7C5F: Reset/GESC/Space Cadet/Haptic/Auto shift(AS)/Dynamic macro
+    // 0x7E00..=0x7E0F: UserN -> 0x840..0x84F
     Unknown                          = 0xFFFF,
 }
 
