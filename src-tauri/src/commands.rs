@@ -116,23 +116,24 @@ pub async fn get_layout_keymap(state: tauri::State<'_, AppState>) -> Result<Vec<
         let width = (kle_key.width, kle_key.width2);
         let height = (kle_key.height, kle_key.height2);
         let rotation = kle_key.rotation;
-        let layer = 0u8;
         let legends_text = kle_key.legends[0].as_ref().unwrap().text.clone();
         let mut parts = legends_text.split(',').map(|s| s.parse::<u8>().unwrap());
         let row = parts.next().unwrap();
         let col = parts.next().unwrap();
-        let keycode = state.kbd_params.keymap_set.get(&(layer, row, col)).unwrap().to_owned();
-        keys.push(Key {
-            layer,
-            row,
-            col,
-            position_x,
-            position_y,
-            width,
-            height,
-            rotation,
-            keycode,
-        });
+        for layer in 0..state.kbd_params.layers {
+            let keycode = state.kbd_params.keymap_set.get(&(layer, row, col)).unwrap().to_owned();
+            keys.push(Key {
+                layer,
+                row,
+                col,
+                position_x,
+                position_y,
+                width,
+                height,
+                rotation,
+                keycode,
+            });
+        }
     }
     Ok(keys)
 }

@@ -1,9 +1,5 @@
 <script lang="ts" setup>
 const layoutKeymap = defineModel<any[]>();
-// const props = defineProps<{
-//   layoutKeymap: any[];
-// }>();
-// console.log(layoutKeymap.value);
 const selectedValue = ref();
 
 const emit = defineEmits(['selected']);
@@ -33,9 +29,9 @@ const containerSize = computed(() => {
         width: `${containerSize.width}px`,
       }"
     >
+    <template v-for="(key, index) in layoutKeymap" :key="index">
       <Key
-        v-for="(key, index) in layoutKeymap"
-        :key="index"
+        v-if="key.layer === 0"
         :keymap="key"
         v-model="selectedValue"
         type="radio"
@@ -49,6 +45,7 @@ const containerSize = computed(() => {
           top: key.position_y[0] * 58 + 'px',
         }"
       />
+    </template>
     </div>
   </div>
 </template>
