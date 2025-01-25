@@ -24,7 +24,8 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
     tsConfig: {
-      exclude: ['node_modules/**', 'dist/**', 'src-tauri/**'],
+      include: ['app/**/*.ts', 'app/**/*.vue'],
+      exclude: ['node_modules/**', 'dist/**'],
     },
   },
 
