@@ -26,17 +26,6 @@ pub async fn get_vial_devices(state: tauri::State<'_, AppState>) -> Result<Vec<V
             );
         }
     }
-    //only for test
-    state.current_device = Some(state.hid_api.open_path(&devices[0].path).unwrap());
-    state.kbd_params.layers = layer_count(state.current_device.as_ref().unwrap());
-    state.kbd_params.macros = macro_count(state.current_device.as_ref().unwrap());
-    state.kbd_params.payload = get_vial_payload(state.current_device.as_ref().unwrap());
-    state.kbd_params.rows = state.kbd_params.payload["matrix"]["rows"].as_u64().unwrap() as u8;
-    state.kbd_params.cols = state.kbd_params.payload["matrix"]["cols"].as_u64().unwrap() as u8;
-    state.kbd_params.keys = key_count(&state.kbd_params.payload);
-
-    // info!("Found keyboard: {:?}", keyboard);
-
     Ok(devices)
 }
 
@@ -47,6 +36,8 @@ pub async fn connect_vial_device(state: tauri::State<'_, AppState>, path: CStrin
     state.kbd_params.layers = layer_count(&device);
     state.kbd_params.macros = macro_count(&device);
     state.kbd_params.payload = get_vial_payload(&device);
+    state.kbd_params.rows = state.kbd_params.payload["matrix"]["rows"].as_u64().unwrap() as u8;
+    state.kbd_params.cols = state.kbd_params.payload["matrix"]["cols"].as_u64().unwrap() as u8;
     state.kbd_params.keys = key_count(&state.kbd_params.payload);
     state.current_device = Some(device);
 

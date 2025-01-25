@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { invoke } from '@tauri-apps/api/core';
-
-await invoke('get_vial_devices');
+const hidDevicesStore = useHidDevicesStore();
+hidDevicesStore.devices = await invoke('get_vial_devices');
 await invoke('update_keymap');
 </script>
 
