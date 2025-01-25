@@ -23,7 +23,9 @@ export default defineNuxtConfig({
 
   typescript: {
     typeCheck: true,
-    tsConfig: {},
+    tsConfig: {
+      exclude: ['node_modules/**', 'dist/**', 'src-tauri/**'],
+    },
   },
 
   vite: {
