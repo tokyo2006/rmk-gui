@@ -9,7 +9,7 @@ watch(selectedDevicePath, async (newValue) => {
 if (hidDevicesStore.devices.length > 0) {
   selectedDevicePath.value = hidDevicesStore.devices[0]?.path;
 } else {
-  selectedDevicePath.value = "Device not found";
+  selectedDevicePath.value = 'Device not found';
 }
 </script>
 

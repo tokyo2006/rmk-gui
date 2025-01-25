@@ -23,10 +23,6 @@ export default defineNuxtConfig({
 
   typescript: {
     typeCheck: true,
-    tsConfig: {
-      include: ['app/**/*.ts', 'app/**/*.vue'],
-      exclude: ['node_modules/**', 'dist/**'],
-    },
   },
 
   vite: {
