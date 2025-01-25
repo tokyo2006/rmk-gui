@@ -11,6 +11,7 @@ use crate::utils::*;
 #[tauri::command]
 pub async fn get_vial_devices(state: tauri::State<'_, AppState>) -> Result<Vec<VialDevice>, ()> {
     let mut state = state.lock().await;
+    state.hid_api.refresh_devices().unwrap();
     let mut devices = Vec::new();
     for device_info in state.hid_api.device_list() {
         let serial_number = device_info.serial_number().unwrap_or("");
