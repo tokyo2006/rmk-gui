@@ -5,6 +5,7 @@ use std::collections::HashMap;
 
 #[derive(Debug)]
 pub struct KeyboardParams {
+    #[allow(unused)]
     pub name:       String,
     pub rows:       u8,
     pub cols:       u8,

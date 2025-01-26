@@ -2,6 +2,7 @@ pub mod app_state;
 pub use app_state::*;
 
 pub mod error;
+#[allow(unused_imports)]
 pub use error::*;
 
 pub mod constants;

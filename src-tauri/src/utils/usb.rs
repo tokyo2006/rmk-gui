@@ -1,6 +1,5 @@
 use byteorder::{ByteOrder, LittleEndian};
 use hidapi::{DeviceInfo, HidDevice};
-use log::info;
 use serde_json::Value;
 use std::io::Read;
 use xz2::read::XzDecoder;
