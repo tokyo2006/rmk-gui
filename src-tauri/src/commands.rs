@@ -122,27 +122,33 @@ pub async fn get_layout_keymap(state: tauri::State<'_, AppState>) -> Result<Vec<
         let col = parts.next().unwrap();
         for layer in 0..state.kbd_params.layers {
             let keycode = state.kbd_params.keymap_set.get(&(layer, row, col)).unwrap().to_owned();
-            keys.push(Key {
-                layer,
-                row,
-                col,
+            keys.push(Key::new(
+                (layer, row, col),
                 position_x,
                 position_y,
                 width,
                 height,
                 rotation,
                 keycode,
-            });
+            ));
         }
     }
     Ok(keys)
 }
 
 #[tauri::command]
-pub async fn get_keycode_list(_state: tauri::State<'_, AppState>) -> Result<Vec<(String, u16)>, ()> {
+pub async fn get_keycode_list(_state: tauri::State<'_, AppState>) -> Result<Vec<Key>, ()> {
     let mut keycode_list = vec![];
     for keycode in KeyCode::iter() {
-        keycode_list.push((keycode.to_string(), keycode as u16));
+        keycode_list.push(Key::new(
+            (0, 0, 0),
+            (0f64, 0f64),
+            (0f64, 0f64),
+            (1f64, 0f64),
+            (1f64, 0f64),
+            0f64,
+            keycode,
+        ));
     }
     Ok(keycode_list)
 }

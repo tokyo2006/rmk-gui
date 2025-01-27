@@ -1,4 +1,4 @@
-use super::KeyCode;
+use super::{keycode_to_display, KeyCode};
 use serde::Serialize;
 use serde_json::Value;
 use std::collections::HashMap;
@@ -33,13 +33,35 @@ impl KeyboardParams {
 
 #[derive(Debug, Serialize)]
 pub struct Key {
-    pub layer:      u8,
-    pub row:        u8,
-    pub col:        u8,
-    pub position_x: (f64, f64),
-    pub position_y: (f64, f64),
-    pub width:      (f64, f64),
-    pub height:     (f64, f64),
-    pub rotation:   f64,
-    pub keycode:    KeyCode,
+    pub lyr_row_col: (u8, u8, u8),
+    pub position_x:  (f64, f64),
+    pub position_y:  (f64, f64),
+    pub width:       (f64, f64),
+    pub height:      (f64, f64),
+    pub rotation:    f64,
+    pub keycode:     KeyCode,
+    pub display:     (String, Option<String>),
+}
+
+impl Key {
+    pub fn new(
+        lyr_row_col: (u8, u8, u8),
+        position_x: (f64, f64),
+        position_y: (f64, f64),
+        width: (f64, f64),
+        height: (f64, f64),
+        rotation: f64,
+        keycode: KeyCode,
+    ) -> Self {
+        Self {
+            lyr_row_col,
+            position_x,
+            position_y,
+            width,
+            height,
+            rotation,
+            keycode,
+            display: keycode_to_display(keycode),
+        }
+    }
 }

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const layout = ref<any[]>();
-layout.value = await invoke('get_layout_keymap');
+layout.value = await invoke<Key[]>('get_layout_keymap');
+console.log(layout.value);
 let keycode: any[] = await invoke('get_keycode_list');
 
 let currKey: any;
@@ -17,7 +18,7 @@ const setKeycode = async (key: any) => {
     keycode: key[1],
   });
   await invoke('update_keymap');
-  layout.value = await invoke('get_layout_keymap');
+  layout.value = await invoke<Key[]>('get_layout_keymap');
   console.log(layout.value);
 };
 </script>
@@ -28,14 +29,7 @@ const setKeycode = async (key: any) => {
     <div
       class="flex-grow max-h-full flex flex-wrap justify-between w-10/12 mx-auto mt-8 overflow-y-auto overflow-x-hidden"
     >
-      <Key
-        v-for="key in keycode"
-        @onClick="setKeycode(key)"
-        type="button"
-        :key="key.keycode"
-        :lower="key[0]"
-        radioGroup="1"
-      />
+      <Key v-for="key in keycode" :keyProp="key" />
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const layoutKeymap = defineModel<any[]>();
+const layoutKeymap = defineModel<Key[]>();
 const selectedValue = ref();
 
 const emit = defineEmits(['selected']);
@@ -29,23 +29,18 @@ const containerSize = computed(() => {
         width: `${containerSize.width}px`,
       }"
     >
-    <template v-for="(key, index) in layoutKeymap" :key="index">
-      <Key
-        v-if="key.layer === 0"
-        :keymap="key"
-        v-model="selectedValue"
-        type="radio"
-        :lower="key.keycode"
-        :length="key.width[0]"
-        :value="key"
-        :radioGroup="key.keycode"
-        :style="{
-          position: 'absolute',
-          left: key.position_x[0] * 58 + 'px',
-          top: key.position_y[0] * 58 + 'px',
-        }"
-      />
-    </template>
+      <template v-for="(key, index) in layoutKeymap" :key="index">
+        <Key
+          v-if="key.lyr_row_col[0] === 0"
+          :keyProp="key"
+          v-model="selectedValue"
+          :style="{
+            position: 'absolute',
+            left: key.position_x[0] * 58 + 'px',
+            top: key.position_y[0] * 58 + 'px',
+          }"
+        />
+      </template>
     </div>
   </div>
 </template>
