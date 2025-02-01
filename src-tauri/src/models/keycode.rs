@@ -1,10 +1,10 @@
 use num_enum::TryFromPrimitive;
-use serde::Serialize;
+use serde::{ser::SerializeStruct, Serialize, Serializer};
 use strum::{Display, EnumIter};
 
 // copy from https://github.com/HaoboGu/rmk/blob/main/rmk/src/keyboard.rs
 #[repr(u16)]
-#[derive(Debug, Clone, Copy, Serialize, TryFromPrimitive, EnumIter, Display, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, TryFromPrimitive, EnumIter, Display, PartialEq, Eq)]
 pub enum KeyCode {
     /// Reserved, no-key.
     No                               = 0x0000,
@@ -748,6 +748,15 @@ impl From<&[u8]> for KeyCode {
             Ok(keycode) => keycode,
             Err(_) => Self::Unknown,
         }
+    }
+}
+
+impl Serialize for KeyCode {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        serializer.serialize_u16(*self as u16)
     }
 }
 

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 const layoutKeymap = defineModel<Key[]>();
-const selectedValue = ref();
+const selectedLyrRowCol = ref();
 
-const emit = defineEmits(['selected']);
-watch(selectedValue, () => {
-  emit('selected', selectedValue.value);
+const emit = defineEmits(['updateLyrRowCol']);
+watch(selectedLyrRowCol, () => {
+  emit('updateLyrRowCol', selectedLyrRowCol.value);
 });
 
 const containerSize = computed(() => {
@@ -18,6 +18,10 @@ const containerSize = computed(() => {
   });
   return { width: maxWidth, height: maxHeight };
 });
+
+// setInterval(() => {
+//   console.log(selectedLyrRowCol.value)
+// }, 1000)
 </script>
 
 <template>
@@ -33,7 +37,8 @@ const containerSize = computed(() => {
         <Key
           v-if="key.lyr_row_col[0] === 0"
           :keyProp="key"
-          v-model="selectedValue"
+          :radio="true"
+          v-model="selectedLyrRowCol"
           :style="{
             position: 'absolute',
             left: key.position_x[0] * 58 + 'px',
