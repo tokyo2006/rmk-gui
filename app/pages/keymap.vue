@@ -11,18 +11,16 @@ const switchNext = () => {
   );
   if (index === -1) return;
   // 保证layer相同
-  let nextIndex = (index + 1) % keyboard.keyboard.keys.length
+  let nextIndex = (index + 1) % keyboard.keyboard.keys.length;
   while (keyboard.keyboard.keys[index]?.lyr_row_col[0] !== keyboard.keyboard.keys[nextIndex]?.lyr_row_col[0]) {
-    nextIndex = (nextIndex + 1) % keyboard.keyboard.keys.length
+    nextIndex = (nextIndex + 1) % keyboard.keyboard.keys.length;
   }
   pageKeymap.selectedLyrRowCol = keyboard.keyboard.keys[nextIndex]?.lyr_row_col as [number, number, number];
-}
+};
 
 const setKeycode = async (key: Key) => {
   await invoke('set_keycode', {
-    layer: pageKeymap.selectedLyrRowCol[0],
-    row: pageKeymap.selectedLyrRowCol[1],
-    col: pageKeymap.selectedLyrRowCol[2],
+    lyrRowCol: pageKeymap.selectedLyrRowCol,
     keycode: key.keycode,
   });
   await invoke('update_keymap');

@@ -154,14 +154,14 @@ pub async fn get_keycode_list(_state: tauri::State<'_, AppState>) -> Result<Vec<
 }
 
 #[tauri::command]
-pub async fn set_keycode(state: tauri::State<'_, AppState>, layer: u8, row: u8, col: u8, keycode: u16) -> Result<(), ()> {
+pub async fn set_keycode(state: tauri::State<'_, AppState>, lyr_row_col: (u8, u8, u8), keycode: u16) -> Result<(), ()> {
     let state = state.lock().await;
     let device = state.current_device.as_ref().unwrap();
     let mut msg = [0u8; 6];
     msg[0] = VialCommand::SetKeycode.into();
-    msg[1] = layer;
-    msg[2] = row;
-    msg[3] = col;
+    msg[1] = lyr_row_col.0;
+    msg[2] = lyr_row_col.1;
+    msg[3] = lyr_row_col.2;
     BigEndian::write_u16(&mut msg[4..=5], keycode);
     write_read(&device, &msg).unwrap();
     Ok(())
