@@ -1,16 +1,12 @@
 <script lang="ts" setup>
-const layoutKeymap = defineModel<Key[]>();
-const selectedLyrRowCol = ref();
-
-const emit = defineEmits(['updateLyrRowCol']);
-watch(selectedLyrRowCol, () => {
-  emit('updateLyrRowCol', selectedLyrRowCol.value);
-});
+const keyboard = useKeyboard();
+// const keyboard = defineModel<Key[]>();
+const { selectedLyrRowCol } = storeToRefs(usePageKeymap());
 
 const containerSize = computed(() => {
   let maxWidth = 0;
   let maxHeight = 0;
-  layoutKeymap.value?.forEach((key) => {
+  keyboard.keyboard.keys.forEach((key) => {
     const rightEdge = key.position_x[0] * 58 + key.width[0] * 58;
     const bottomEdge = key.position_y[0] * 58 + 58;
     maxWidth = Math.max(maxWidth, rightEdge);
@@ -18,10 +14,6 @@ const containerSize = computed(() => {
   });
   return { width: maxWidth, height: maxHeight };
 });
-
-// setInterval(() => {
-//   console.log(selectedLyrRowCol.value)
-// }, 1000)
 </script>
 
 <template>
@@ -33,7 +25,7 @@ const containerSize = computed(() => {
         width: `${containerSize.width}px`,
       }"
     >
-      <template v-for="(key, index) in layoutKeymap" :key="index">
+      <template v-for="(key, index) in keyboard.keyboard.keys" :key="index">
         <Key
           v-if="key.lyr_row_col[0] === 0"
           :keyProp="key"
