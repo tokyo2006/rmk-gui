@@ -1,14 +1,12 @@
 [package]
-name = "app"
+name = "rmk-gui"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+description = "Gui configuration for RMK based on Tauri and Nuxt"
+authors = ["LiYang"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/liyang8246/rmk-gui"
 edition = "2024"
 rust-version = "1.85.0"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
 name = "app_lib"
