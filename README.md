@@ -5,6 +5,12 @@ Gui configuration for <a href="https://github.com/HaoboGu/rmk">RMK</a> based on 
 <h3>
 </div>
 
+## Warn
+
+本项目当前正处于史诗级屎山构建阶段, 建议您保持安全距离观赏.
+
+This project is currently in the process of building an epic-level shit mountain. It is recommended to observe from a safe distance.
+
 ## Preview
 
 todo
@@ -59,7 +65,7 @@ RMK-GUI was based on or inspired by these projects and so on:
 
 RMK-GUI is licensed under either of
 
-- Apache License, Version 2.0 (LICENSE-APACHE or <http://www.apache.org/licenses/LICENSE-2.0>)
-- MIT license (LICENSE-MIT or <http://opensource.org/licenses/MIT>)
+- Apache License, Version 2.0 (LICENSE-APACHE or [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0))
+- MIT license (LICENSE-MIT or [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT))
 
 at your option.
