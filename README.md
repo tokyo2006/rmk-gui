@@ -22,7 +22,7 @@ Supports Windows (x64/x86), Linux (x64/arm64) and macOS 10.15+ (intel/apple).
 
 ## Features
 
-- Based on Rust and Tauri 2 frameworks.
+- Based on Rust and Tauri2 frameworks.
 - Concise and modern user interface.
 - Support for Windows, macOS, and Linux.
 
