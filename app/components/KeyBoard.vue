@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 const keyboard = useKeyboard();
-// const keyboard = defineModel<Key[]>();
-const { selectedLyrRowCol } = storeToRefs(usePageKeymap());
+const pageKeymap = usePageKeymap();
+const selectedLyrRowCol = ref<[number, number, number]>([0, 1, 1]);
+
+const selectKey = (key: Key) => {
+  pageKeymap.selectedLyrRowCol = key.lyr_row_col;
+};
 
 const containerSize = computed(() => {
   let maxWidth = 0;
@@ -29,8 +33,8 @@ const containerSize = computed(() => {
         <Key
           v-if="key.lyr_row_col[0] === 0"
           :keyProp="key"
-          :radio="true"
-          v-model="selectedLyrRowCol"
+          :border="key.lyr_row_col.toString() === pageKeymap.selectedLyrRowCol.toString()"
+          @click="selectKey(key)"
           :style="{
             position: 'absolute',
             left: key.position_x[0] * 58 + 'px',
