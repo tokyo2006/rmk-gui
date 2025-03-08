@@ -1,5 +1,5 @@
 use num_enum::TryFromPrimitive;
-use serde::{ser::SerializeStruct, Serialize, Serializer};
+use serde::{Serialize, Serializer};
 use strum::{Display, EnumIter};
 
 // copy from https://github.com/HaoboGu/rmk/blob/main/rmk/src/keyboard.rs

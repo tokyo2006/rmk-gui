@@ -1,7 +1,7 @@
 use super::{keycode_to_display, KeyCode};
 use serde::Serialize;
 use serde_json::Value;
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 #[derive(Debug)]
 pub struct KeyboardParams {
@@ -13,7 +13,8 @@ pub struct KeyboardParams {
     pub macros:     u8,
     pub keys:       usize,
     pub payload:    Value,
-    pub keymap_set: HashMap<(u8, u8, u8), KeyCode>,
+    // (layer, row, col)
+    pub keymap_set: BTreeMap<(u8, u8, u8), KeyCode>,
 }
 
 impl KeyboardParams {
@@ -26,7 +27,7 @@ impl KeyboardParams {
             macros:     0,
             keys:       0,
             payload:    Value::Null,
-            keymap_set: HashMap::new(),
+            keymap_set: BTreeMap::new(),
         }
     }
 }

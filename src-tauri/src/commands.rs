@@ -121,7 +121,7 @@ pub async fn get_layout_keymap(state: tauri::State<'_, AppState>) -> Result<Vec<
         let row = parts.next().unwrap();
         let col = parts.next().unwrap();
         for layer in 0..state.kbd_params.layers {
-            let keycode = state.kbd_params.keymap_set.get(&(layer, row, col)).unwrap().to_owned();
+            let keycode = state.kbd_params.keymap_set.get(&(layer, row, col)).unwrap().clone();
             keys.push(Key::new(
                 (layer, row, col),
                 position_x,
