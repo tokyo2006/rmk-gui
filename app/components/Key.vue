@@ -1,41 +1,22 @@
 <script lang="ts" setup>
 const props = defineProps<{
   keyProp: Key;
-  radio?: boolean;
+  border?: boolean;
 }>();
-const selectedLyrRowCol = defineModel<[number, number, number]>();
 const emit = defineEmits(['click']);
-
-const pageKeymap = usePageKeymap();
-const select = () => {
-  emit('click');
-  if (props.radio) {
-    selectedLyrRowCol.value = props.keyProp.lyr_row_col;
-  }
-};
 
 const keyWidth = computed(() => {
   return `calc(58px * ${props.keyProp.width[0]})`;
 });
-
-const isSelected = ref(false);
-
-watch(
-  selectedLyrRowCol,
-  () => {
-    isSelected.value = selectedLyrRowCol.value?.toString() === props.keyProp.lyr_row_col?.toString() && props.radio;
-  },
-  { deep: true }
-);
 </script>
 
 <template>
   <div class="w-[58px] h-[58px] p-1" :style="{ width: keyWidth }">
     <label
       class="flex justify-center items-center bg-base-100 h-full w-full rounded-md border shadow-sm px-1 cursor-pointer"
-      :class="{ 'border-primary': isSelected }"
+      :class="{ 'border-primary': props.border }"
     >
-      <input type="button" @click="select" class="hidden" :value="[keyProp.lyr_row_col]" />
+      <input type="button" @click="$emit('click')" class="hidden" :value="[keyProp.lyr_row_col]" />
       <span
         v-if="!props.keyProp.display[1]"
         class="flex justify-center text-center"
