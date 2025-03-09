@@ -17,6 +17,25 @@ const switchNext = () => {
   }
   pageKeymap.selectedLyrRowCol = keyboard.keyboard.keys[nextIndex]?.lyr_row_col as [number, number, number];
 };
+const handler = async (event: KeyboardEvent) => {
+  console.log(event.key);
+
+  await invoke('set_keycode_from_name', {
+    lyrRowCol: pageKeymap.selectedLyrRowCol,
+    name: event.key,
+  });
+  await invoke('update_keymap');
+  keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap');
+  switchNext();
+};
+
+onMounted(() => {
+  window.addEventListener('keydown', handler);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handler);
+});
 
 const setKeycode = async (key: Key) => {
   await invoke('set_keycode', {
