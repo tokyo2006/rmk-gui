@@ -6,16 +6,16 @@ const props = defineProps<{
 const emit = defineEmits(['click']);
 
 const keyWidth1 = computed(() => {
-  return `calc(50px * ${props.keyProp.width[0]})`;
+  return `calc(58px * ${props.keyProp.width[0]} - 8px)`;
 });
 const keyWidth2 = computed(() => {
-  return `calc(50px * ${props.keyProp.width[1]})`;
+  return `calc(58px * ${props.keyProp.width[1]} - 8px)`;
 });
 const keyHeight1 = computed(() => {
-  return `calc(50px * ${props.keyProp.height[0]})`;
+  return `calc(58px * ${props.keyProp.height[0]} - 8px)`;
 });
 const keyHeight2 = computed(() => {
-  return `calc(50px * ${props.keyProp.height[1]})`;
+  return `calc(58px * ${props.keyProp.height[1]} - 8px)`;
 });
 const keyMaxWidth = computed(() => {
   return `calc(58px * ${props.keyProp.width[0] > props.keyProp.width[1] ? props.keyProp.width[0] : props.keyProp.width[1]})`;
