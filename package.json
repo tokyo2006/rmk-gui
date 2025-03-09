@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "fmt": "prettier --write ./app nuxt.config.ts package.json README.md src-tauri/tauri.conf.json && cd src-tauri && cargo fmt",
+    "fmt": "prettier --write ./app nuxt.config.ts package.json README.md src-tauri/tauri.conf.json && cd src-tauri && cargo +nightly fmt",
     "clean": "rimraf .nuxt .output node_modules dist src-tauri/target || true"
   },
   "dependencies": {
