@@ -144,8 +144,8 @@ pub async fn get_keycode_list(_state: tauri::State<'_, AppState>) -> Result<Vec<
             (0, 0, 0),
             (0f64, 0f64),
             (0f64, 0f64),
-            (1f64, 0f64),
-            (1f64, 0f64),
+            (1f64, 1f64),
+            (1f64, 1f64),
             0f64,
             keycode,
         ));

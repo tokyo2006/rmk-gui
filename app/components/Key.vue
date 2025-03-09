@@ -5,29 +5,76 @@ const props = defineProps<{
 }>();
 const emit = defineEmits(['click']);
 
-const keyWidth = computed(() => {
-  return `calc(58px * ${props.keyProp.width[0]})`;
+const keyWidth1 = computed(() => {
+  return `calc(50px * ${props.keyProp.width[0]})`;
+});
+const keyWidth2 = computed(() => {
+  return `calc(50px * ${props.keyProp.width[1]})`;
+});
+const keyHeight1 = computed(() => {
+  return `calc(50px * ${props.keyProp.height[0]})`;
+});
+const keyHeight2 = computed(() => {
+  return `calc(50px * ${props.keyProp.height[1]})`;
+});
+const keyMaxWidth = computed(() => {
+  return `calc(58px * ${props.keyProp.width[0] > props.keyProp.width[1] ? props.keyProp.width[0] : props.keyProp.width[1]})`;
+});
+const keyMaxHeight = computed(() => {
+  return `calc(58px * ${props.keyProp.height[0] > props.keyProp.height[1] ? props.keyProp.height[0] : props.keyProp.height[1]})`;
 });
 </script>
 
 <template>
-  <div class="w-[58px] h-[58px] p-1" :style="{ width: keyWidth }">
-    <label
-      class="flex justify-center items-center bg-base-100 h-full w-full rounded-md border shadow-sm px-1 cursor-pointer"
-      :class="{ 'border-primary': props.border }"
-    >
-      <input type="button" @click="$emit('click')" class="hidden" :value="[keyProp.lyr_row_col]" />
-      <span
-        v-if="!props.keyProp.display[1]"
-        class="flex justify-center text-center"
-        :class="{ 'text-[10px]': keyProp.display[0].length > 1 }"
+  <!-- <input type="button" @click="$emit('click')" class="hidden" :value="[keyProp.lyr_row_col]" />
+        <span
+          v-if="!props.keyProp.display[1]"
+          class="flex justify-center text-center"
+          :class="{ 'text-[10px]': keyProp.display[0].length > 1 }"
+        >
+          {{ keyProp.display[0] }}
+        </span>
+        <span v-else class="flex flex-col justify-center">
+          <p class="flex justify-center items-center text-xs">{{ keyProp.display[0] }}</p>
+          <p class="flex justify-center items-center text-xs">{{ keyProp.display[1] }}</p>
+        </span> -->
+
+  <div
+    class="w-[58px] h-[58px] p-1 rounded-md cursor-pointer relative"
+    :style="{ width: keyMaxWidth, height: keyMaxHeight }"
+  >
+    <label>
+      <div
+        class="rounded-md bg-base-100 outline outline-[1.5px] cursor-pointer absolute"
+        :style="{ width: keyWidth1, height: keyHeight1 }"
+        :class="{ ' outline-blue-800': props.border }"
+      ></div>
+      <div
+        class="rounded-md bg-base-100 outline outline-[1.5px] cursor-pointer absolute"
+        :style="{ width: keyWidth2, height: keyHeight2 }"
+        :class="{ ' outline-blue-800': props.border }"
+      ></div>
+      <div
+        class="rounded-md bg-base-100 cursor-pointer absolute"
+        :style="{ width: keyWidth2, height: keyHeight2 }"
+      ></div>
+      <div
+        class="rounded-md bg-base-100 cursor-pointer absolute flex justify-center items-center"
+        :style="{ width: keyWidth1, height: keyHeight1 }"
       >
-        {{ keyProp.display[0] }}
-      </span>
-      <span v-else class="flex flex-col justify-center">
-        <p class="flex justify-center items-center text-xs">{{ keyProp.display[0] }}</p>
-        <p class="flex justify-center items-center text-xs">{{ keyProp.display[1] }}</p>
-      </span>
-    </label>
+        <input type="button" @click="$emit('click')" class="hidden" :value="[keyProp.lyr_row_col]" />
+        <span
+          v-if="!props.keyProp.display[1]"
+          class="flex justify-center text-center"
+          :class="{ 'text-[10px]': keyProp.display[0].length > 1 }"
+        >
+          {{ keyProp.display[0] }}
+        </span>
+        <span v-else class="flex flex-col justify-center">
+          <p class="flex justify-center items-center text-xs">{{ keyProp.display[0] }}</p>
+          <p class="flex justify-center items-center text-xs">{{ keyProp.display[1] }}</p>
+        </span>
+      </div></label
+    >
   </div>
 </template>
