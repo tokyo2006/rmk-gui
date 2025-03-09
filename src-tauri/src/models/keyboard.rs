@@ -1,4 +1,4 @@
-use super::{keycode_to_display, KeyCode};
+use super::{KeyCode, keycode_to_display};
 use serde::Serialize;
 use serde_json::Value;
 use std::collections::BTreeMap;

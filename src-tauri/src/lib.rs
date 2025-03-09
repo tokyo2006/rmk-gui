@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use tauri::{async_runtime::Mutex, generate_handler, AppHandle, Manager};
+use tauri::{AppHandle, Manager, async_runtime::Mutex, generate_handler};
 
 mod commands;
 mod models;
