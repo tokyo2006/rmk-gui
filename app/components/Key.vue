@@ -6,16 +6,16 @@ const props = defineProps<{
 const emit = defineEmits(['click']);
 
 const keyWidth1 = computed(() => {
-  return `calc(50px * ${props.keyProp.width[0]})`;
+  return `calc(58px * ${props.keyProp.width[0]} - 8px)`;
 });
 const keyWidth2 = computed(() => {
-  return `calc(50px * ${props.keyProp.width[1]})`;
+  return `calc(58px * ${props.keyProp.width[1]} - 8px)`;
 });
 const keyHeight1 = computed(() => {
-  return `calc(50px * ${props.keyProp.height[0]})`;
+  return `calc(58px * ${props.keyProp.height[0]} - 8px)`;
 });
 const keyHeight2 = computed(() => {
-  return `calc(50px * ${props.keyProp.height[1]})`;
+  return `calc(58px * ${props.keyProp.height[1]} - 8px)`;
 });
 const keyMaxWidth = computed(() => {
   return `calc(58px * ${props.keyProp.width[0] > props.keyProp.width[1] ? props.keyProp.width[0] : props.keyProp.width[1]})`;
@@ -45,14 +45,14 @@ const keyMaxHeight = computed(() => {
   >
     <label>
       <div
-        class="rounded-md bg-base-100 outline outline-[1.5px] cursor-pointer absolute"
+        class="rounded-md bg-base-100 outline outline-[1px] cursor-pointer absolute outline-base-300"
         :style="{ width: keyWidth1, height: keyHeight1 }"
-        :class="{ ' outline-blue-800': props.border }"
+        :class="{ ' outline-primary outline-[2px]': props.border }"
       ></div>
       <div
-        class="rounded-md bg-base-100 outline outline-[1.5px] cursor-pointer absolute"
+        class="rounded-md bg-base-100 outline outline-[1px] cursor-pointer absolute outline-base-300"
         :style="{ width: keyWidth2, height: keyHeight2 }"
-        :class="{ ' outline-blue-800': props.border }"
+        :class="{ ' outline-primary outline-[2px]': props.border }"
       ></div>
       <div
         class="rounded-md bg-base-100 cursor-pointer absolute"
