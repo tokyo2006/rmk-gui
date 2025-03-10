@@ -6,6 +6,8 @@ interface Key {
   width: [number, number]; // (f64, f64) -> [number, number]
   height: [number, number]; // (f64, f64) -> [number, number]
   rotation: number; // f64 -> number
+  rotation_x: number; // f64 -> number
+  rotation_y: number; // f64 -> number
   keycode: number; // KeyCode (u16) -> number
   display: [string, string] | [string]; // Comma -> [',', '<'], F1 -> ['F1']
 }
