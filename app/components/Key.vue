@@ -32,12 +32,12 @@ const keyMaxHeight = computed(() => {
   >
     <label>
       <div
-        class="rounded-md  outline outline-[1px] cursor-pointer absolute outline-base-300"
+        class="rounded-md  outline outline-[1px] cursor-pointer shadow-sm absolute outline-base-300"
         :style="{ width: keyWidth1, height: keyHeight1 }"
         :class="{ ' outline-primary outline-[2px]': props.border }"
       ></div>
       <div
-        class="rounded-md  outline outline-[1px] cursor-pointer absolute outline-base-300 "
+        class="rounded-md  outline outline-[1px] cursor-pointer shadow-sm absolute outline-base-300 "
         :style="{
           width: keyWidth2,
           height: keyHeight2,
