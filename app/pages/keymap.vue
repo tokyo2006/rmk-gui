@@ -2,7 +2,6 @@
 const keyboard = useKeyboard();
 const pageKeymap = usePageKeymap();
 keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap');
-console.log(keyboard.keyboard.keys);
 let keycode: Key[] = await invoke('get_keycode_list');
 
 const switchNext = () => {
@@ -18,8 +17,6 @@ const switchNext = () => {
   pageKeymap.selectedLyrRowCol = keyboard.keyboard.keys[nextIndex]?.lyr_row_col as [number, number, number];
 };
 const handler = async (event: KeyboardEvent) => {
-  console.log(event.key);
-
   await invoke('set_keycode_from_name', {
     lyrRowCol: pageKeymap.selectedLyrRowCol,
     name: event.key,
