@@ -23,12 +23,23 @@ const keyMaxWidth = computed(() => {
 const keyMaxHeight = computed(() => {
   return `calc(58px * ${props.keyProp.height[0] > props.keyProp.height[1] ? props.keyProp.height[0] : props.keyProp.height[1]})`;
 });
+const translate = computed(() => {
+  return (
+    `calc((-${props.keyProp.position_x[0]} + ${props.keyProp.rotation_x}) * 58px)` +
+    `calc((-${props.keyProp.position_y[0]} + ${props.keyProp.rotation_y}) * 58px)`
+  );
+});
 </script>
 
 <template>
   <div
     class="w-[58px] h-[58px] p-1 rounded-md cursor-pointer relative"
-    :style="{ width: keyMaxWidth, height: keyMaxHeight }"
+    :style="{
+      width: keyMaxWidth,
+      height: keyMaxHeight,
+      transform: `rotate(${props.keyProp.rotation}deg)`,
+      transformOrigin: translate,
+    }"
   >
     <label>
       <div
