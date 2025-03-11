@@ -5,7 +5,7 @@ interface Key {
   position_y: [number, number]; // (f64, f64) -> [number, number]
   width: [number, number]; // (f64, f64) -> [number, number]
   height: [number, number]; // (f64, f64) -> [number, number]
-  rotation: number; // f64 -> number
+  rotation: [number, number, number]; // (f64, f64, f64) -> [number, number, number]
   keycode: number; // KeyCode (u16) -> number
   display: [string, string] | [string]; // Comma -> [',', '<'], F1 -> ['F1']
 }

@@ -4,7 +4,6 @@ const selectedDevicePath = ref();
 watch(selectedDevicePath, async (newValue) => {
   await invoke('connect_vial_device', { path: newValue });
   await invoke('update_keymap');
-  console.log(await invoke('get_key_count'));
 });
 if (hidDevicesStore.devices.length > 0) {
   selectedDevicePath.value = hidDevicesStore.devices[0]?.path;

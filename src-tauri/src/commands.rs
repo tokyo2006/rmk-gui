@@ -115,7 +115,7 @@ pub async fn get_layout_keymap(state: tauri::State<'_, AppState>) -> Result<Vec<
         let position_y = (kle_key.y, kle_key.y2);
         let width = (kle_key.width, kle_key.width2);
         let height = (kle_key.height, kle_key.height2);
-        let rotation = kle_key.rotation;
+        let rotation = (kle_key.rotation, kle_key.rx, kle_key.ry);
         let legends_text = kle_key.legends[0].as_ref().unwrap().text.clone();
         let mut parts = legends_text.split(',').map(|s| s.parse::<u8>().unwrap());
         let row = parts.next().unwrap();
@@ -146,7 +146,7 @@ pub async fn get_keycode_list(_state: tauri::State<'_, AppState>) -> Result<Vec<
             (0f64, 0f64),
             (1f64, 1f64),
             (1f64, 1f64),
-            0f64,
+            (0f64, 0f64, 0f64),
             keycode,
         ));
     }
