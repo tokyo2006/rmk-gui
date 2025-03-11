@@ -8,15 +8,34 @@ const selectKey = (key: Key) => {
 };
 
 const containerSize = computed(() => {
-  let maxWidth = 0;
-  let maxHeight = 0;
+  let width = 0;
+  let height = 0;
   keyboard.keyboard.keys.forEach((key) => {
-    const rightEdge = key.position_x[0] * 58 + key.width[0] * 58;
-    const bottomEdge = key.position_y[0] * 58 + 58;
-    maxWidth = Math.max(maxWidth, rightEdge);
-    maxHeight = Math.max(maxHeight, bottomEdge);
+    let vertexs: [number, number][] = [
+      // rectangle 1
+      [key.position_x[0], key.position_y[0]],
+      [key.position_x[0] + key.width[0], key.position_y[0]],
+      [key.position_x[0] + key.width[0], key.position_y[0] + key.height[0]],
+      [key.position_x[0], key.position_y[0] + key.height[0]],
+      // rectangle 2
+      [key.position_x[0] + key.position_x[1], key.position_y[0] + key.position_y[1]],
+      [key.position_x[0] + key.position_x[1] + key.width[1], key.position_y[0] + key.position_y[1]],
+      [key.position_x[0] + key.position_x[1] + key.width[1], key.position_y[0] + key.position_y[1] + key.height[1]],
+      [key.position_x[0] + key.position_x[1], key.position_y[0] + key.position_y[1] + key.height[1]],
+    ];
+    vertexs.forEach((vertex) => {
+      let [angle, centerX, centerY] = key.rotation;
+      let [x, y] = vertex;
+      angle = (angle * Math.PI) / 180;
+      const offsetX = x - centerX;
+      const offsetY = y - centerY;
+      x = centerX + offsetX * Math.cos(angle) - offsetY * Math.sin(angle);
+      y = centerY + offsetX * Math.sin(angle) + offsetY * Math.cos(angle);
+      width = Math.max(width, x);
+      height = Math.max(height, y);
+    });
   });
-  return { width: maxWidth, height: maxHeight };
+  return { width: width * 58, height: height * 58 };
 });
 </script>
 
