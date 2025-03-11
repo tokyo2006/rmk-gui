@@ -39,9 +39,7 @@ pub struct Key {
     pub position_y:  (f64, f64),
     pub width:       (f64, f64),
     pub height:      (f64, f64),
-    pub rotation:    f64,
-    pub rotation_x:  f64,
-    pub rotation_y:  f64,
+    pub rotation:    (f64, f64, f64),
     pub keycode:     KeyCode,
     pub display:     (String, Option<String>),
 }
@@ -53,9 +51,7 @@ impl Key {
         position_y: (f64, f64),
         width: (f64, f64),
         height: (f64, f64),
-        rotation: f64,
-        rotation_x: f64,
-        rotation_y: f64,
+        rotation: (f64, f64, f64),
         keycode: KeyCode,
     ) -> Self {
         Self {
@@ -65,8 +61,6 @@ impl Key {
             width,
             height,
             rotation,
-            rotation_x,
-            rotation_y,
             keycode,
             display: keycode_to_display(keycode),
         }

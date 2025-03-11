@@ -25,8 +25,8 @@ const keyMaxHeight = computed(() => {
 });
 const translate = computed(() => {
   return (
-    `calc((-${props.keyProp.position_x[0]} + ${props.keyProp.rotation_x}) * 58px)` +
-    `calc((-${props.keyProp.position_y[0]} + ${props.keyProp.rotation_y}) * 58px)`
+    `calc((-${props.keyProp.position_x[0]} + ${props.keyProp.rotation[1]}) * 58px)` +
+    `calc((-${props.keyProp.position_y[0]} + ${props.keyProp.rotation[2]}) * 58px)`
   );
 });
 </script>
@@ -37,7 +37,7 @@ const translate = computed(() => {
     :style="{
       width: keyMaxWidth,
       height: keyMaxHeight,
-      transform: `rotate(${props.keyProp.rotation}deg)`,
+      transform: `rotate(${props.keyProp.rotation[0]}deg)`,
       transformOrigin: translate,
     }"
   >
