@@ -25,6 +25,8 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
 
+  css: ['~/assets/main.css'],
+
   vite: {
     clearScreen: false,
     envPrefix: ['VITE_', 'TAURI_'],
@@ -33,5 +35,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
+  modules: ['@nuxt/ui', '@pinia/nuxt'],
 });
