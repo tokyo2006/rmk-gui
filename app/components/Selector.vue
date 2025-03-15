@@ -2,10 +2,8 @@
 const props = defineProps<{
   items: any[];
   label?: string;
-  default?: any;
 }>();
 const selected = defineModel();
-selected.value = props.default ? props.default : props.items[0];
 </script>
 
 <template>
