@@ -12,8 +12,6 @@
     "clean": "rimraf .nuxt .output node_modules dist src-tauri/target || true"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.294",
-    "@iconify/tailwind": "^1.2.0",
     "@ijprest/kle-serial": "^0.15.1",
     "@nuxt/icon": "1.11.0",
     "@pinia/nuxt": "0.10.1",

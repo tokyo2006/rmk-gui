@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@iconify/json':
-        specifier: ^2.2.294
-        version: 2.2.294
-      '@iconify/tailwind':
-        specifier: ^1.2.0
-        version: 1.2.0
       '@ijprest/kle-serial':
         specifier: ^0.15.1
         version: 0.15.1
@@ -395,12 +389,6 @@ packages:
 
   '@iconify/collections@1.0.528':
     resolution: {integrity: sha512-AfQ7FtDlLsMsv1y1nfJ1WBF6R0HdbNe+BmUZ2bmekNuOzv0z+TMNF02EFUunkH2zQ+NFAEL02O8hvMjHZhPLLA==}
-
-  '@iconify/json@2.2.294':
-    resolution: {integrity: sha512-Vopidp3VQtscXYB6qUI8uJf15ihrzaJjwhvLnxHIMB3JYqvCKI1JHI+UMKaWkbOOJDsOg9b0rIXmRovShk8YrQ==}
-
-  '@iconify/tailwind@1.2.0':
-    resolution: {integrity: sha512-KgpIHWOTcRYw1XcoUqyNSrmYyfLLqZYu3AmP8zdfLk0F5TqRO8YerhlvlQmGfn7rJXgPeZN569xPAJnJ53zZxA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -4191,15 +4179,6 @@ snapshots:
     optional: true
 
   '@iconify/collections@1.0.528':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify/json@2.2.294':
-    dependencies:
-      '@iconify/types': 2.0.0
-      pathe: 1.1.2
-
-  '@iconify/tailwind@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
