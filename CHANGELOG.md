@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.0](https://github.com/liyang8246/rmk-gui/compare/v0.1.0...v0.2.0) (2025-03-15)
+
+
+### Features
+
+* **components:** add Selector component ([4ba8f38](https://github.com/liyang8246/rmk-gui/commit/4ba8f38aab9dfc05cdeab357ca81821cf2a09479))
+* **keymap:** support switch layer ([9efddb1](https://github.com/liyang8246/rmk-gui/commit/9efddb196eca4db0b69cf17b2164d931e118a7cc))
+* **keymap:** support switch layer ([01cd43b](https://github.com/liyang8246/rmk-gui/commit/01cd43b0a3c8d26eecae09ac0ff3c4728b73e98f))
+* **ui:** add select component ([2908467](https://github.com/liyang8246/rmk-gui/commit/2908467239a33eb6f93deb11458995ddc1cfed97))
+
+
+### Bug Fixes
+
+* **app:** correct evaluation of selected device path ([5d38456](https://github.com/liyang8246/rmk-gui/commit/5d3845602d7f83d1d4e20039f04b091306f60be6))
+
 ## [0.1.0](https://github.com/liyang8246/rmk-gui/compare/v0.0.1...v0.1.0) (2025-03-11)
 
 
