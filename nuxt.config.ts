@@ -25,6 +25,15 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
 
+  css: ['~/assets/main.css'],
+  tailwindcss: {
+    cssPath: '~/assets/main.css',
+  },
+  shadcn: {
+    prefix: '',
+    componentDir: './app/components/ui',
+  },
+
   vite: {
     clearScreen: false,
     envPrefix: ['VITE_', 'TAURI_'],
@@ -33,5 +42,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'shadcn-nuxt', '@nuxt/icon'],
 });
