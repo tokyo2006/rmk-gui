@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "fmt": "prettier --write ./app nuxt.config.ts package.json README.md src-tauri/tauri.conf.json && cd src-tauri && cargo +nightly fmt",
-    "clean": "rimraf .nuxt .output node_modules dist src-tauri/target || true"
+    "clean": "rimraf .nuxt .output node_modules dist src-tauri/target || true",
+    "prepare": "husky"
   },
   "dependencies": {
     "@ijprest/kle-serial": "^0.15.1",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.13.2",
     "@tauri-apps/cli": "^2.3.1",
+    "husky": "^9.1.7",
     "prettier": "3.4.2",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.2",
