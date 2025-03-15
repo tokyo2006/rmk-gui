@@ -5,6 +5,7 @@ const guiVersion = ref<string | null>(null);
 const layerCount = ref<number | null>(null);
 const keyCount = ref<number | null>(null);
 const macrosCount = ref<number | null>(null);
+const { keyboard } = useKeyboardStore();
 
 onMounted(async () => {
   const [version, layers, keys, macros] = await Promise.all([

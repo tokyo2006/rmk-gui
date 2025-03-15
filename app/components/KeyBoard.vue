@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const keyboard = useKeyboard();
+const keyboard = useKeyboardStore();
 const pageKeymap = usePageKeymap();
 const selectedLyrRowCol = ref<[number, number, number]>([0, 1, 1]);
 
