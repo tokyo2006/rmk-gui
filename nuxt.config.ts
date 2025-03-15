@@ -26,6 +26,9 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/main.css'],
+  tailwindcss: {
+    cssPath: '~/assets/main.css',
+  },
   shadcn: {
     prefix: '',
     componentDir: './app/components/ui'
