@@ -31,9 +31,9 @@ export default defineNuxtConfig({
   },
   shadcn: {
     prefix: '',
-    componentDir: './app/components/ui'
+    componentDir: './app/components/ui',
   },
-  
+
   vite: {
     clearScreen: false,
     envPrefix: ['VITE_', 'TAURI_'],
