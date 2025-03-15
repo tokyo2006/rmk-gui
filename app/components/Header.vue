@@ -2,7 +2,7 @@
 const hidDevicesStore = useHidDevicesStore();
 const selectedDevicePath = ref();
 watch(selectedDevicePath, async (newValue: string) => {
-  await invoke('connect_vial_device', { path: eval(newValue) });
+  await invoke('connect_vial_device', { path: eval('['+newValue+']') });
   await invoke('update_keymap');
 });
 if (hidDevicesStore.devices.length > 0) {
