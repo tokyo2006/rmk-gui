@@ -57,9 +57,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: rmk-gui-v__VERSION__
+          tagName: v__VERSION__
           releaseName: RMK-GUI v__VERSION__
-          releaseBody: :)
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
