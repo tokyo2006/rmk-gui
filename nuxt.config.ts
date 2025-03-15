@@ -26,7 +26,11 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/main.css'],
-
+  shadcn: {
+    prefix: '',
+    componentDir: './components/ui'
+  },
+  
   vite: {
     clearScreen: false,
     envPrefix: ['VITE_', 'TAURI_'],
@@ -35,5 +39,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/ui', '@pinia/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'shadcn-nuxt'],
 });
