@@ -7,7 +7,7 @@ const selected = defineModel();
 </script>
 
 <template>
-  <div class="flex w-fit rounded-md overflow-hidden border shadow-sm">
+  <div class="flex w-fit rounded-md overflow-hidden border border-base-200 shadow-sm">
     <label v-if="label" class="cursor-pointer">
       <span class="flex items-center h-full px-3">{{ label }}</span>
     </label>
