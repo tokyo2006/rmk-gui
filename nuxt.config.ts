@@ -33,6 +33,9 @@ export default defineNuxtConfig({
     prefix: '',
     componentDir: './app/components/ui',
   },
+  colorMode: {
+    classSuffix: '',
+  },
 
   vite: {
     clearScreen: false,
@@ -42,5 +45,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'shadcn-nuxt', '@nuxt/icon'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@pinia/nuxt', 'shadcn-nuxt', '@nuxt/icon'],
 });
