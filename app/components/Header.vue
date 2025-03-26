@@ -21,6 +21,8 @@ if (hidDevicesStore.devices.length > 0) {
 } else {
   selectedDevicePath.value = 'Device not found';
 }
+
+await invoke('get_marcoes');
 </script>
 
 <template>

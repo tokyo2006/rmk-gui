@@ -16,3 +16,6 @@ pub use vial_device::*;
 
 pub mod keyboard;
 pub use keyboard::*;
+
+pub mod macros;
+pub use macros::*;
