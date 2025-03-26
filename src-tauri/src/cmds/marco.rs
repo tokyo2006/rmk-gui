@@ -59,6 +59,11 @@ fn macro_deserialize_v2(raw_macros: &Vec<&[u8]>) -> Result<Vec<Vec<MacroAction>>
                         let key = KeyCode::from(&[0, raw_macro.remove(0)][..]);
                         v.push(key);
                     }
+                    MacroAction::Delay(x) => {
+                        let delay = (raw_macro.remove(0), raw_macro.remove(0));
+                        let delay = (delay.0 - 1) as u16 + (delay.1 - 1) as u16 * 255;
+                        *x = Some(delay);
+                    }
                     _ => {}
                 }
             } else {
@@ -75,9 +80,10 @@ fn macro_deserialize_v2(raw_macros: &Vec<&[u8]>) -> Result<Vec<Vec<MacroAction>>
                 }
             }
         }
-        macro_actions.push(action.take().unwrap());
+        if let Some(action) = action {
+            macro_actions.push(action);
+        }
         macros_actions.push(macro_actions);
-        break;
     }
     Ok(macros_actions)
 }

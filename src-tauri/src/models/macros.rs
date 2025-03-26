@@ -23,7 +23,7 @@ pub enum MacroCode {
     /// 单字节按键释放 (SS_UP_CODE)
     Up      = 3,
     /// 延迟控制码 (SS_DELAY_CODE)
-    Delay   = 5,
+    Delay   = 4,
     /// 双字节扩展点击 (VIAL_MACRO_EXT_TAP)
     ExtTap  = 6,
     /// 双字节扩展按下 (VIAL_MACRO_EXT_DOWN)
@@ -37,11 +37,11 @@ pub enum MacroCode {
 impl From<u8> for MacroCode {
     fn from(value: u8) -> Self {
         match value {
+            0 => MacroCode::Tap,
             1 => MacroCode::Prefix,
             2 => MacroCode::Down,
             3 => MacroCode::Up,
-            0 => MacroCode::Tap,
-            // 5 => MacroCode::Delay,
+            4 => MacroCode::Delay,
             // 6 => MacroCode::ExtTap,
             // 7 => MacroCode::ExtDown,
             // 8 => MacroCode::ExtUp,
