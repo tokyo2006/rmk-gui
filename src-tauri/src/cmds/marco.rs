@@ -26,7 +26,8 @@ pub async fn get_marcoes(state: tauri::State<'_, AppState>) -> Result<(), ()> {
             break;
         }
     }
-    let macros: Vec<&[u8]> = macro_memory.split(|x| x == &0u8).collect();
+    let mut macros: Vec<&[u8]> = macro_memory.split(|x| x == &0u8).collect();
+    macros.truncate(state.kbd_params.macros as usize);
     println!("macros: {:?}", macros);
     println!("macros: {:?}", macro_deserialize_v2(&macros));
     Ok(())
