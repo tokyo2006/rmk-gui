@@ -43,7 +43,7 @@ fn macro_deserialize_v2(raw_macros: &Vec<&[u8]>) -> Result<Vec<Vec<MacroAction>>
             let mut code = raw_macro[0];
             let mut macro_code = MacroCode::from(code);
             if let MacroCode::Prefix = macro_code {
-                //Down Up Tap
+                //Down Up Tap Delay
                 raw_macro.remove(0);
                 code = raw_macro.remove(0);
                 macro_code = MacroCode::from(code);
