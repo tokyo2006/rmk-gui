@@ -41,12 +41,13 @@ fn macro_deserialize_v2(raw_macros: &Vec<&[u8]>) -> Result<Vec<Vec<MacroAction>>
         while raw_macro.len() > 0 {
             let mut code = raw_macro[0];
             let mut macro_code = MacroCode::from(code);
-            if let MacroCode::Prefix = macro_code { //Down Up Tap
+            if let MacroCode::Prefix = macro_code {
+                //Down Up Tap
                 raw_macro.remove(0);
                 code = raw_macro.remove(0);
                 macro_code = MacroCode::from(code);
                 if action.is_none() {
-                    action = Some(MacroAction::from(macro_code));                
+                    action = Some(MacroAction::from(macro_code));
                 }
                 if discriminant(action.as_ref().unwrap()) != discriminant(&MacroAction::from(macro_code)) {
                     macro_actions.push(action.take().unwrap());
@@ -56,12 +57,13 @@ fn macro_deserialize_v2(raw_macros: &Vec<&[u8]>) -> Result<Vec<Vec<MacroAction>>
                     MacroAction::Down(v) | MacroAction::Up(v) | MacroAction::Tap(v) => {
                         let key = KeyCode::from(&[0, raw_macro.remove(0)][..]);
                         v.push(key);
-                    },
+                    }
                     _ => {}
                 }
-            } else { // Text
+            } else {
+                // Text
                 if action.is_none() {
-                    action = Some(MacroAction::Text("".to_string()));                
+                    action = Some(MacroAction::Text("".to_string()));
                 }
                 if discriminant(action.as_ref().unwrap()) != discriminant(&MacroAction::Text("".to_string())) {
                     macro_actions.push(action.take().unwrap());
