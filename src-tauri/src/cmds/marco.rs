@@ -6,7 +6,7 @@ use crate::models::*;
 use crate::utils::*;
 
 #[tauri::command]
-pub async fn get_marcoes(state: tauri::State<'_, AppState>) -> CommandResult<()> {
+pub async fn get_marcoes(state: tauri::State<'_, AppState>) -> CommandResult<Vec<Vec<MacroAction>>> {
     let state = state.lock().await;
     let device = match state.current_device.as_ref() {
         Some(device) => device,
@@ -51,7 +51,7 @@ pub async fn get_marcoes(state: tauri::State<'_, AppState>) -> CommandResult<()>
 
     println!("macros: {:?}", deserialized_macros);
 
-    Ok(())
+    Ok(deserialized_macros)
 }
 
 fn macro_deserialize_v2(raw_macros: &Vec<&[u8]>) -> Result<Vec<Vec<MacroAction>>, String> {

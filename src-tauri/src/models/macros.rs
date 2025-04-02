@@ -1,8 +1,9 @@
+use serde::Serialize;
 use strum::EnumIter;
 
 use super::KeyCode;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub enum MacroAction {
     Text(String),
     Tap(Vec<KeyCode>),
