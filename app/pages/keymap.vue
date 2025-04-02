@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import LayerSelecter from '~/components/LayerSelecter.vue';
 definePageMeta({
-  headerComponent: LayerSelecter
-})
+  headerComponent: LayerSelecter,
+});
 
 const keyboard = useKeyboardStore();
 const pageKeymap = usePageKeymap();

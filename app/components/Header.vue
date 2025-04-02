@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import LayerSelecter from '@/components/LayerSelecter.vue'
 const hidDevicesStore = useHidDevicesStore();
-
 const selectedDevicePath = ref();
 
 watch(selectedDevicePath, async (newValue: string) => {
@@ -15,8 +13,8 @@ if (hidDevicesStore.devices.length > 0) {
   selectedDevicePath.value = 'Device not found';
 }
 
-const route = useRoute()
-const componentName = computed(() => route.meta.headerComponent)
+const route = useRoute();
+const componentName = computed(() => route.meta.headerComponent);
 </script>
 
 <template>

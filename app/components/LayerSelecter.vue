@@ -9,13 +9,11 @@ watch(selectedLayer, async (newValue: number) => {
 </script>
 
 <template>
-    <Selector
-      :items="Array.from({ length: keyboard.layer }, (_, i) => i)"
-      :label="'Layer:'"
-      :default="0"
-      v-model="selectedLayer"
-      class="h-full"
-    />
+  <Selector
+    :items="Array.from({ length: keyboard.layer }, (_, i) => i)"
+    :label="'Layer:'"
+    :default="0"
+    v-model="selectedLayer"
+    class="h-full"
+  />
 </template>
-
-
