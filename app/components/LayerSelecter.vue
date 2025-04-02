@@ -1,9 +1,8 @@
 <script setup lang="ts">
 const { keyboard } = useKeyboardStore();
 const pageKeymap = usePageKeymap();
-const selectedLayer = ref(0);
-watch(selectedLayer, async (newValue: number) => {
-  pageKeymap.selectedLayer = newValue;
+const { selectedLayer } = storeToRefs(pageKeymap);
+watch(selectedLayer, async () => {
   await invoke('update_keymap');
 });
 </script>
