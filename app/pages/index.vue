@@ -15,6 +15,7 @@ onMounted(async () => {
   guiVersion.value = version;
   layerCount.value = layers;
   keyboard.layer = layers;
+  keyboard.macro = macros;
   keyCount.value = keys;
   macrosCount.value = macros;
 });
