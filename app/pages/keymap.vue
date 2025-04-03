@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import LayerSelecter from '~/components/LayerSelecter.vue';
 definePageMeta({
-  headerComponent: LayerSelecter,
+  headerComponent: markRaw(LayerSelecter),
 });
 
 const keyboard = useKeyboardStore();
