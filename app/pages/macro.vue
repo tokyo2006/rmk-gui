@@ -4,7 +4,10 @@ definePageMeta({
   headerComponent: markRaw(MacroSelecter),
 });
 
-const macros = await invoke<any[]>('get_marcoes');
+const macros = await invoke<any[]>('get_marcoes').catch((e) => {
+  showErrorToast(e);
+  return [[]];
+});
 </script>
 
 <template>

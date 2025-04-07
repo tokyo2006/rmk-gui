@@ -7,15 +7,27 @@ const { keyboard } = useKeyboardStore();
 
 onMounted(async () => {
   const [version, layers, keys, macros] = await Promise.all([
-    invoke<string>('get_gui_version'),
-    invoke<number>('get_layer_count'),
-    invoke<number>('get_key_count'),
-    invoke<number>('get_macro_count'),
+    invoke<string>('get_gui_version').catch((e) => {
+      showErrorToast(e);
+      return null;
+    }),
+    invoke<number>('get_layer_count').catch((e) => {
+      showErrorToast(e);
+      return null;
+    }),
+    invoke<number>('get_key_count').catch((e) => {
+      showErrorToast(e);
+      return null;
+    }),
+    invoke<number>('get_macro_count').catch((e) => {
+      showErrorToast(e);
+      return null;
+    }),
   ]);
   guiVersion.value = version;
   layerCount.value = layers;
-  keyboard.layer = layers;
-  keyboard.macro = macros;
+  keyboard.layer = layers ?? 0;
+  keyboard.macro = macros ?? 0;
   keyCount.value = keys;
   macrosCount.value = macros;
 });
