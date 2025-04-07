@@ -1,18 +1,9 @@
 <script lang="ts" setup>
 const hidDevicesStore = useHidDevicesStore();
-const { keyboard } = useKeyboardStore();
-const pageKeymap = usePageKeymap();
-
 const selectedDevicePath = ref();
-const selectedLayer = ref(0);
 
 watch(selectedDevicePath, async (newValue: string) => {
   await invoke('connect_vial_device', { path: eval('[' + newValue + ']') });
-  await invoke('update_keymap');
-});
-
-watch(selectedLayer, async (newValue: number) => {
-  pageKeymap.selectedLayer = newValue;
   await invoke('update_keymap');
 });
 
@@ -21,6 +12,9 @@ if (hidDevicesStore.devices.length > 0) {
 } else {
   selectedDevicePath.value = 'Device not found';
 }
+
+const route = useRoute();
+const componentName = computed(() => route.meta.headerComponent);
 </script>
 
 <template>
@@ -41,12 +35,6 @@ if (hidDevicesStore.devices.length > 0) {
         </SelectGroup>
       </SelectContent>
     </Select>
-    <Selector
-      :items="Array.from({ length: keyboard.layer }, (_, i) => i)"
-      :label="'Layer:'"
-      :default="0"
-      v-model="selectedLayer"
-      class="h-full"
-    />
+    <component :is="componentName" />
   </div>
 </template>

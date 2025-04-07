@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { invoke } from '@tauri-apps/api/core';
-
 const guiVersion = ref<string | null>(null);
 const layerCount = ref<number | null>(null);
 const keyCount = ref<number | null>(null);
@@ -17,6 +15,7 @@ onMounted(async () => {
   guiVersion.value = version;
   layerCount.value = layers;
   keyboard.layer = layers;
+  keyboard.macro = macros;
   keyCount.value = keys;
   macrosCount.value = macros;
 });

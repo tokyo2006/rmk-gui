@@ -1,4 +1,9 @@
 <script lang="ts" setup>
+import LayerSelecter from '~/components/LayerSelecter.vue';
+definePageMeta({
+  headerComponent: markRaw(LayerSelecter),
+});
+
 const keyboard = useKeyboardStore();
 const pageKeymap = usePageKeymap();
 keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap');

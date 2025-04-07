@@ -9,7 +9,7 @@ const selected = defineModel();
 <template>
   <div class="flex w-fit rounded-md overflow-hidden border border-base-200 shadow-sm">
     <label v-if="label" class="cursor-pointer">
-      <span class="flex items-center h-full px-3">{{ label }}</span>
+      <span class="flex items-center justify-center h-full w-16">{{ label }}</span>
     </label>
     <div class="flex rounded-l-lg overflow-hidden bg-base-200">
       <template v-for="(item, index) in items" :key="index">

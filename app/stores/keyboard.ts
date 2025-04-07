@@ -2,6 +2,7 @@ export const useKeyboardStore = defineStore('Keyboard', () => {
   const keyboard = ref<Keyboard>({
     name: '',
     layer: 0,
+    macro: 0,
     row: 0,
     col: 0,
     keys: [],

@@ -1,7 +1,14 @@
+<script lang="ts" setup>
+import MacroSelecter from '~/components/MacroSelecter.vue';
+definePageMeta({
+  headerComponent: markRaw(MacroSelecter),
+});
+
+const macros = await invoke<any[]>('get_marcoes');
+</script>
+
 <template>
-  <div class="text-center">macro comming soon</div>
+  <div class="m-2 flex flex-col gap-2">
+    <MacroGroup v-for="macro in macros[0]" :action="macro" />
+  </div>
 </template>
-
-<script lang="ts" setup></script>
-
-<style></style>

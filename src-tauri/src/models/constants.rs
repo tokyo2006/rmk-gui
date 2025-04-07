@@ -8,13 +8,15 @@ pub const BUFFER_FETCH_CHUNK: usize = 28;
 
 #[repr(u8)]
 pub enum VialCommand {
-    GetSize         = 0x01,
-    GetDefinition   = 0x02,
-    SetKeycode      = 0x05,
-    GetMacroCount   = 0x0C,
-    GetLayerCount   = 0x11,
-    GetKeymapBuffer = 0x12,
-    VialPrefix      = 0xFE,
+    GetSize            = 0x01,
+    GetDefinition      = 0x02,
+    SetKeycode         = 0x05,
+    GetMacroCount      = 0x0C,
+    GetMacroBuffer     = 0x0E,
+    GetMacroBufferSize = 0x0D,
+    GetLayerCount      = 0x11,
+    GetKeymapBuffer    = 0x12,
+    VialPrefix         = 0xFE,
 }
 
 impl Into<u8> for VialCommand {

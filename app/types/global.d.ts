@@ -19,6 +19,7 @@ interface VialDevice {
 interface Keyboard {
   name: string;
   layer: number;
+  macro: number;
   row: number;
   col: number;
   keys: Key[];
