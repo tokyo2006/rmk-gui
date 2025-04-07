@@ -7,7 +7,7 @@ use crate::utils::*;
 #[tauri::command]
 pub async fn get_vial_devices(state: tauri::State<'_, AppState>) -> CommandResult<Vec<VialDevice>> {
     let mut state = state.lock().await;
-    let result = match state.hid_api.refresh_devices() {
+    match state.hid_api.refresh_devices() {
         Ok(_) => {
             let mut devices = Vec::new();
             for device_info in state.hid_api.device_list() {
@@ -27,9 +27,7 @@ pub async fn get_vial_devices(state: tauri::State<'_, AppState>) -> CommandResul
             Ok(devices)
         }
         Err(e) => Err(format!("Failed to refresh HID devices: {}", e)),
-    };
-
-    into_command_result(result)
+    }
 }
 
 #[tauri::command]

@@ -3,14 +3,14 @@ const hidDevicesStore = useHidDevicesStore();
 const selectedDevicePath = ref();
 
 watch(selectedDevicePath, async (newValue: string) => {
-  await invoke('connect_vial_device', { path: eval('[' + newValue + ']') });
-  await invoke('update_keymap');
+  await invoke('connect_vial_device', { path: eval('[' + newValue + ']') }).catch(showErrorToast);
+  await invoke('update_keymap').catch(showErrorToast);
 });
 
 if (hidDevicesStore.devices.length > 0) {
   selectedDevicePath.value = hidDevicesStore.devices[0]?.path.toString();
 } else {
-  selectedDevicePath.value = 'Device not found';
+  showErrorToast('No keyboard found');
 }
 
 const route = useRoute();

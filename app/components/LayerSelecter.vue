@@ -3,7 +3,7 @@ const { keyboard } = useKeyboardStore();
 const pageKeymap = usePageKeymap();
 const { selectedLayer } = storeToRefs(pageKeymap);
 watch(selectedLayer, async () => {
-  await invoke('update_keymap');
+  await invoke('update_keymap').catch(showErrorToast);
 });
 </script>
 

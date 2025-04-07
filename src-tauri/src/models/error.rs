@@ -36,8 +36,3 @@ pub enum AppError {
 // Use Result<T, String> for Tauri commands
 // This is because complex error types don't implement Serialize required by Tauri
 pub type CommandResult<T> = Result<T, String>;
-
-// Helper function to convert any error to CommandResult
-pub fn into_command_result<T, E: std::fmt::Display>(result: Result<T, E>) -> CommandResult<T> {
-    result.map_err(|e| e.to_string())
-}

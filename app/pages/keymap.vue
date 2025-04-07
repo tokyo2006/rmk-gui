@@ -6,8 +6,14 @@ definePageMeta({
 
 const keyboard = useKeyboardStore();
 const pageKeymap = usePageKeymap();
-keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap');
-let keycode: Key[] = await invoke('get_keycode_list');
+keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap').catch((e) => {
+  showErrorToast(e);
+  return [];
+});
+let keycode: Key[] = await invoke<Key[]>('get_keycode_list').catch((e) => {
+  showErrorToast(e);
+  return [];
+});
 
 const switchNext = () => {
   const index = keyboard.keyboard.keys.findIndex(
@@ -25,9 +31,12 @@ const handler = async (event: KeyboardEvent) => {
   await invoke('set_keycode_from_name', {
     lyrRowCol: pageKeymap.selectedLyrRowCol,
     name: event.key,
+  }).catch(showErrorToast);
+  await invoke('update_keymap').catch(showErrorToast);
+  keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap').catch((e) => {
+    showErrorToast(e);
+    return [];
   });
-  await invoke('update_keymap');
-  keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap');
   switchNext();
 };
 
@@ -43,9 +52,12 @@ const setKeycode = async (key: Key) => {
   await invoke('set_keycode', {
     lyrRowCol: pageKeymap.selectedLyrRowCol,
     keycode: key.keycode,
+  }).catch(showErrorToast);
+  await invoke('update_keymap').catch(showErrorToast);
+  keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap').catch((e) => {
+    showErrorToast(e);
+    return [];
   });
-  await invoke('update_keymap');
-  keyboard.keyboard.keys = await invoke<Key[]>('get_layout_keymap');
   switchNext();
 };
 </script>

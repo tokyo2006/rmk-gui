@@ -6,7 +6,10 @@ const actionType = Object.keys(props.action)[0];
 let actionValue = Object.values(props.action)[0];
 if (actionType === 'Tap' || actionType === 'Up' || actionType === 'Down') {
   for (let i = 0; i < actionValue.length; i++) {
-    actionValue[i] = await invoke<Key>('get_key_from_keycode', { keycode: actionValue[i] });
+    actionValue[i] = await invoke<Key>('get_key_from_keycode', { keycode: actionValue[i] }).catch((e) => {
+      showErrorToast(e);
+      return { keycode: 0, display: '' };
+    });
   }
 }
 console.log(actionType, actionValue);

@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 const hidDevicesStore = useHidDevicesStore();
-hidDevicesStore.devices = await invoke('get_vial_devices');
+hidDevicesStore.devices = await invoke<{ product_string: string; path: number[] }[]>('get_vial_devices').catch((e) => {
+  showErrorToast(e);
+  return [];
+});
 </script>
 
 <template>
@@ -10,5 +13,6 @@ hidDevicesStore.devices = await invoke('get_vial_devices');
       <Header />
       <NuxtPage class="flex-grow" />
     </div>
+    <Toaster />
   </main>
 </template>
