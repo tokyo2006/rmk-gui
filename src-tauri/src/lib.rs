@@ -36,6 +36,7 @@ pub fn run() {
             cmds::get_keycode_list,
             cmds::set_keycode,
             cmds::get_marcoes,
+            cmds::get_key_from_keycode,
         ]);
     builder
         .run(tauri::generate_context!())
