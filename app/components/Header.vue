@@ -10,7 +10,7 @@ watch(selectedDevicePath, async (newValue: string) => {
 if (hidDevicesStore.devices.length > 0) {
   selectedDevicePath.value = hidDevicesStore.devices[0]?.path.toString();
 } else {
-  selectedDevicePath.value = 'Device not found';
+  showErrorToast('No keyboard found');
 }
 
 const route = useRoute();
