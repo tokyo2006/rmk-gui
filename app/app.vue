@@ -10,5 +10,6 @@ hidDevicesStore.devices = await invoke('get_vial_devices');
       <Header />
       <NuxtPage class="flex-grow" />
     </div>
+    <Toaster />
   </main>
 </template>
