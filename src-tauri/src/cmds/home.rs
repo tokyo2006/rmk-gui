@@ -12,7 +12,10 @@ pub async fn get_vial_devices(state: tauri::State<'_, AppState>) -> CommandResul
             let mut devices = Vec::new();
             for device_info in state.hid_api.device_list() {
                 let serial_number = device_info.serial_number().unwrap_or("");
-                if serial_number.contains(VIAL_SERIAL_NUMBER_MAGIC) && is_rawhid(&device_info) {
+                if serial_number.contains(VIAL_SERIAL_NUMBER_MAGIC) && is_rawhid(&device_info)
+                    || device_info.usage_page() == 0xFF60
+                {
+                    info!("hid device: {:?}", device_info.product_string());
                     devices.push(VialDevice::new(
                         device_info.product_string().unwrap().to_string(),
                         device_info.path().to_owned(),
