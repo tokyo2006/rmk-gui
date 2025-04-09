@@ -13,7 +13,11 @@ This project is currently in the process of building an epic-level shit mountain
 
 ## Preview
 
-todo
+| Home                                | Keymap                                |
+| ----------------------------------- | ------------------------------------- |
+| ![preview](./docs/preview_home.png) | ![preview](./docs/preview_keymap.png) |
+
+It is still in the early stages of development, and the preview images only represent the current state.
 
 ## Install
 
