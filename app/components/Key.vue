@@ -29,6 +29,34 @@ const translate = computed(() => {
     `calc((-${props.keyProp.position_y[0]} + ${props.keyProp.rotation[2]}) * 58px)`
   );
 });
+
+// Add computed properties for dynamic font sizing
+const primaryTextClass = computed(() => {
+  const text = props.keyProp.display[0];
+  const secondaryText = props.keyProp.display[1];
+
+  // For single line text
+  if (!secondaryText) {
+    const length = text.length;
+    if (length <= 1) return 'text-sm';
+    if (length <= 3) return 'text-xs';
+    if (length <= 5) return 'text-[10px]';
+    if (length <= 8) return 'text-[8px]';
+    return 'text-[7px]';
+  }
+
+  // For two-line text, calculate combined length to ensure consistent sizing
+  const totalLength = text.length + secondaryText.length;
+  if (totalLength <= 4) return 'text-xs';
+  if (totalLength <= 8) return 'text-[10px]';
+  if (totalLength <= 12) return 'text-[8px]';
+  return 'text-[7px]';
+});
+
+const secondaryTextClass = computed(() => {
+  // Always use the same class as primary text for consistency
+  return primaryTextClass.value;
+});
 </script>
 
 <template>
@@ -73,14 +101,27 @@ const translate = computed(() => {
         <input type="button" @click="$emit('click')" class="hidden" :value="[keyProp.lyr_row_col]" />
         <span
           v-if="!props.keyProp.display[1]"
-          class="flex justify-center text-center"
-          :class="{ 'text-[10px]': keyProp.display[0].length > 1 }"
+          class="flex justify-center items-center text-center w-full h-full px-1 leading-tight"
+          :class="primaryTextClass"
+          style="word-break: break-all; overflow-wrap: break-word; hyphens: auto; white-space: normal"
         >
           {{ keyProp.display[0] }}
         </span>
-        <span v-else class="flex flex-col justify-center">
-          <p class="flex justify-center items-center text-xs">{{ keyProp.display[0] }}</p>
-          <p class="flex justify-center items-center text-xs">{{ keyProp.display[1] }}</p>
+        <span v-else class="flex flex-col justify-center items-center w-full h-full px-1 leading-none gap-0">
+          <p
+            class="flex justify-center items-center text-center w-full"
+            :class="primaryTextClass"
+            style="word-break: break-all; overflow-wrap: break-word; hyphens: auto; white-space: normal"
+          >
+            {{ keyProp.display[0] }}
+          </p>
+          <p
+            class="flex justify-center items-center text-center w-full"
+            :class="secondaryTextClass"
+            style="word-break: break-all; overflow-wrap: break-word; hyphens: auto; white-space: normal"
+          >
+            {{ keyProp.display[1] }}
+          </p>
         </span>
       </div>
     </label>
