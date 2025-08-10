@@ -25,7 +25,7 @@ and macOS 10.15+ (intel/apple).
 
 ## Development
 
-Make sure you have Rust and Node.js installed on your system.
+Make sure you have Rust, NodeJS and Python installed on your system.
 
 1. Clone the repository:
    ```bash
@@ -38,11 +38,13 @@ Make sure you have Rust and Node.js installed on your system.
    ```
 3. Start the development server:
    ```bash
-   pnpm dev
+   pnpm web:dev
+   pnpm tauri:dev
    ```
 4. Build the application:
    ```bash
-   pnpm build
+   pnpm web:build
+   pnpm tauri:build
    ```
 
 ## Roadmap
