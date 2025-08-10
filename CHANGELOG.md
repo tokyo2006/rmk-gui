@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.3.0](https://github.com/liyang8246/rmk-gui/compare/v0.2.0...v0.3.0) (2025-04-09)
+## [0.4.0](https://github.com/liyang8246/rmk-gui/compare/v0.3.0...v0.4.0) (2025-08-10)
+
+**refactor** : major refactor
+
+- Implemented WebHID for browser-based HID access
+- Added Rust-HID backend for desktop applications
+- Maintained backward compatibility with existing APIs
 
 
 ### Features
