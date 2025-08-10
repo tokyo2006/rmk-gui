@@ -5,7 +5,7 @@
   "description": "Gui configuration for RMK based on Tauri and Nuxt",
   "scripts": {
     "nuxt:prepare": "nuxt prepare",
-    "keycode:gen": "python codegen/gen.py",
+    "keycode:gen": "python3 codegen/gen.py",
     "postinstall": "run-s keycode:gen nuxt:prepare",
     "js:lint": "eslint",
     "js:fix": "eslint --fix",
