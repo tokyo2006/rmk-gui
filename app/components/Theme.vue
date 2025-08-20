@@ -2,21 +2,21 @@
 const themeStore = useThemeStore()
 
 const options = [
-  { icon: 'pi pi-sun text-base', label: 'light' },
-  { icon: 'pi pi-moon text-base', label: 'dark' },
-  { icon: 'pi pi-cog text-base', label: 'system' },
+  { icon: 'tabler:sun', label: 'light' },
+  { icon: 'tabler:moon-stars', label: 'dark' },
+  { icon: 'tabler:settings', label: 'system' },
 ]
 const value = ref(options.find(option => option.label === useColorMode().preference) || options[0]!)
 </script>
 
 <template>
-  <div class="rounded-prime-md w-full p-3 bg-surface-50 dark:bg-surface-700 shadow-sm shadow-surface-300 dark:shadow-surface-950">
-    <h1 class="text-lg text-surface-800 dark:text-surface-200 font-bold mb-4">
+  <div class="rounded-prime-md w-full bg-surface-50 p-3 shadow-sm shadow-surface-300 dark:bg-surface-700 dark:shadow-surface-950">
+    <h1 class="mb-4 text-lg font-bold text-surface-800 dark:text-surface-200">
       Theme
     </h1>
     <div class="flex flex-col gap-6">
-      <div class="flex justify-between items-center">
-        <span class="text-sm text-surface-600 dark:text-surface-300 font-semibold">Primary</span>
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-semibold text-surface-600 dark:text-surface-300">Primary</span>
         <div class="relative">
           <Button
             v-styleclass="{
@@ -28,20 +28,22 @@ const value = ref(options.find(option => option.label === useColorMode().prefere
               hideOnOutsideClick: true,
             }"
             icon="pi pi-palette"
-            class="w-28 h-9 !justify-start"
-            :label="themeStore.primary"
+            class="h-9 w-28 justify-start gap-2 pl-2"
             aria-label="Settings"
-          />
-          <div
-            class="absolute top-10 right-0 w-64 p-4 bg-surface-0 dark:bg-surface-900 rounded-md shadow-lg border border-surface-200 dark:border-surface-700 origin-top z-50 hidden"
           >
-            <div class="flex gap-2 flex-wrap justify-between">
+            <Icon name="tabler:color-filter" />
+            <span>{{ themeStore.primary }}</span>
+          </Button>
+          <div
+            class="absolute right-0 top-10 z-50 hidden w-64 origin-top rounded-md border border-surface-200 bg-surface-0 p-4 shadow-lg dark:border-surface-700 dark:bg-surface-900"
+          >
+            <div class="flex flex-wrap justify-between gap-2">
               <button
                 v-for="pc of primaryColors"
                 :key="pc.name"
                 type="button"
                 :title="pc.name"
-                class="w-5 h-5 rounded-full cursor-pointer transition-all duration-300" :class="[
+                class="size-5 cursor-pointer rounded-full transition-all duration-300" :class="[
                   { 'ring-2 ring-primary-500 ring-offset-2 ring-offset-surface-0 dark:ring-offset-surface-900': themeStore.primary === pc.name },
                 ]"
                 :style="{ backgroundColor: pc.palette['500'] }"
@@ -51,8 +53,8 @@ const value = ref(options.find(option => option.label === useColorMode().prefere
           </div>
         </div>
       </div>
-      <div class="flex justify-between items-center">
-        <span class="text-sm text-surface-600 dark:text-surface-300 font-semibold">Surface</span>
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-semibold text-surface-600 dark:text-surface-300">Surface</span>
         <div class="relative">
           <Button
             v-styleclass="{
@@ -64,20 +66,22 @@ const value = ref(options.find(option => option.label === useColorMode().prefere
               hideOnOutsideClick: true,
             }"
             icon="pi pi-desktop"
-            class="w-28 h-9 !bg-surface-500 !border-surface-500 !justify-start"
-            :label="themeStore.surface"
+            class="h-9 w-28 justify-start gap-2 !border-surface-500 !bg-surface-500 pl-2"
             aria-label="Settings"
-          />
-          <div
-            class="absolute top-10 right-0 w-64 p-4 bg-surface-0 dark:bg-surface-900 rounded-md shadow-lg border border-surface-200 dark:border-surface-700 origin-top z-50 hidden"
           >
-            <div class="flex gap-2 flex-wrap justify-between">
+            <Icon name="tabler:color-swatch" />
+            <span>{{ themeStore.surface }}</span>
+          </Button>
+          <div
+            class="absolute right-0 top-10 z-50 hidden w-64 origin-top rounded-md border border-surface-200 bg-surface-0 p-4 shadow-lg dark:border-surface-700 dark:bg-surface-900"
+          >
+            <div class="flex flex-wrap justify-between gap-2">
               <button
                 v-for="surface of surfaces"
                 :key="surface.name"
                 type="button"
                 :title="surface.name"
-                class="w-5 h-5 rounded-full cursor-pointer transition-all duration-300" :class="[
+                class="size-5 cursor-pointer rounded-full transition-all duration-300" :class="[
                   { 'ring-2 ring-primary-500 ring-offset-2 ring-offset-surface-0 dark:ring-offset-surface-900': themeStore.surface === surface.name },
                 ]"
                 :style="{ backgroundColor: surface.palette['500'] }"
@@ -87,9 +91,9 @@ const value = ref(options.find(option => option.label === useColorMode().prefere
           </div>
         </div>
       </div>
-      <div class="flex justify-between items-center">
-        <span class="text-sm text-surface-600 dark:text-surface-300 font-semibold">Mode</span>
-        <div class="card flex justify-start">
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-semibold text-surface-600 dark:text-surface-300">Mode</span>
+        <div class="flex justify-start">
           <SelectButton
             v-model="value"
             :options="options"
@@ -98,8 +102,8 @@ const value = ref(options.find(option => option.label === useColorMode().prefere
             @click="$colorMode.preference = value.label"
           >
             <template #option="slotProps">
-              <i :class="slotProps.option.icon" />
-              <span class="text-sm text-surface-600 dark:text-surface-400 font-semibold">{{ slotProps.option.label }}</span>
+              <Icon :name="slotProps.option.icon" />
+              <span class="text-sm font-semibold text-surface-600 dark:text-surface-400">{{ slotProps.option.label }}</span>
             </template>
           </SelectButton>
         </div>

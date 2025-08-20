@@ -6,7 +6,8 @@ function delMacro(index: number) {
   keyboardStore.keyMacros[pageMacrosStore.currMacro]!.splice(index, 1)
 }
 function addKeyCode(index: number) {
-  keyboardStore.keyMacros[pageMacrosStore.currMacro]![index]!.keyCodes!.push(keyCodeMap[1]!.symbol)
+  const keyCode = structuredClone(keyCodeMap[1]!.symbol)
+  keyboardStore.keyMacros[pageMacrosStore.currMacro]![index]!.keyCodes!.push(keyCode)
 }
 function setKeycode(zone: 'outer' | 'inner', row: number, col: number) {
   pageMacrosStore.currKey = [pageMacrosStore.currMacro, row, col, zone]
@@ -23,27 +24,29 @@ function selectKeycode(row: number, col: number) {
     :animation="150"
     group="people"
     handle=".handle"
-    class="flex flex-col p-1 gap-2 w-full rounded-prime-md min-h-full"
+    class="rounded-prime-md flex min-h-full w-full flex-col gap-2 p-1"
   >
     <div
       v-for="i, index in keyboardStore.keyMacros[pageMacrosStore.currMacro]!"
       :key="i.type"
-      class="  rounded-prime-md flex min-h-14 w-full px-2 items-center justify-between gap-3 bg-surface-200 dark:bg-surface-900"
+      class="  rounded-prime-md flex min-h-14 w-full items-center justify-between gap-3 bg-surface-200 px-2 dark:bg-surface-900"
     >
-      <div class="flex items-center justify-start gap-2 w-42 h-full">
-        <span class=" w-8 h-8 handle cursor-move"><i class="pi pi-sort-alt w-4 h-4 p-2 text-2xl" /></span>
+      <div class="flex h-full w-40 items-center justify-start gap-2">
+        <span class="flex size-8 cursor-move items-center justify-center transition-all duration-200 hover:text-surface-700 dark:hover:text-surface-300">
+          <Icon name="tabler:arrows-down-up" />
+        </span>
         <MacrosSelect :index="index" />
       </div>
-      <div class=" w-full h-full overflow-hidden">
-        <div v-if="(i as { text: string | null }).text !== undefined" class=" w-full h-full flex items-center justify-start gap-2">
+      <div class=" size-full overflow-hidden">
+        <div v-if="(i as { text: string | null }).text !== undefined" class=" flex size-full items-center justify-start gap-2">
           <InputText
             v-model="keyboardStore.keyMacros[pageMacrosStore.currMacro]![index]!.text"
             variant="filled"
-            class="w-full h-8"
+            class="h-8 w-full"
             type="text"
           />
         </div>
-        <div v-else-if="(i as { delay: number | null }).delay !== undefined" class=" w-full h-full flex items-center justify-start gap-2">
+        <div v-else-if="(i as { delay: number | null }).delay !== undefined" class=" flex size-full items-center justify-start gap-2">
           <InputNumber
             v-model="keyboardStore.keyMacros[pageMacrosStore.currMacro]![index]!.delay"
             suffix=" ms"
@@ -51,7 +54,7 @@ function selectKeycode(row: number, col: number) {
             type="number"
           />
         </div>
-        <div v-else class=" w-full h-full flex items-center justify-start gap-2 m-1 relative">
+        <div v-else class=" relative m-1 flex size-full items-center justify-start gap-2">
           <template v-for="(keyCode, keyCodes_index) in keyboardStore.keyMacros[pageMacrosStore.currMacro]![index]!.keyCodes" :key="keyCodes_index">
             <KeyMapKey
               :keys="keyCode"
@@ -61,19 +64,19 @@ function selectKeycode(row: number, col: number) {
             />
           </template>
           <div
-            class="rounded-prime-md h-8 w-8 bg-surface-300 dark:bg-surface-600 shadow-sm hover:shadow-surface-400 dark:hover:shadow-surface-900 hover:text-surface-700 dark:hover:text-surface-300 transition-all duration-200 flex justify-center items-center"
+            class="rounded-prime-md flex size-8 items-center justify-center transition-all duration-200 hover:text-surface-700 dark:hover:text-surface-300"
             @click="addKeyCode(index)"
           >
-            <i class="pi pi-plus w-4 h-4 text-2xl" />
+            <Icon name="tabler:plus" size="1.2rem" />
           </div>
         </div>
       </div>
-      <span
-        class="rounded-prime-md p-4 w-6 h-6 flex justify-center items-center cursor-pointer transition-colors duration-200 hover:text-surface-400"
+      <div
+        class="rounded-prime-md flex h-8 min-w-8 cursor-pointer items-center justify-center transition-colors duration-200 hover:text-surface-400 dark:hover:text-surface-300"
         @click="delMacro(index)"
       >
-        <i class="pi pi-times w-4 h-4 text-2xl" />
-      </span>
+        <Icon name="tabler:trash-x-filled" />
+      </div>
     </div>
   </VueDraggable>
 </template>
