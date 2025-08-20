@@ -2971,12 +2971,14 @@ name = "rmk-gui"
 version = "0.5.0"
 dependencies = [
  "anyhow",
+ "dirs",
  "hidapi",
  "serde",
  "serde_json",
  "tauri",
  "tauri-build",
  "tauri-plugin-opener",
+ "toml",
 ]
 
 [[package]]
